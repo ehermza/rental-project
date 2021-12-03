@@ -1,0 +1,41 @@
+<!-- <h3 class="text-center text-info"> {{cliente}} </h3> -->
+
+<div class="card border-primary mb-3" [hidden]="this.readonly">
+
+    <div class="card-header">
+        <h3 class="text-center text-primary"> Ingresar Nuevo Pago</h3>
+    </div>
+
+    <div class="card-body">
+        <form (ngSubmit)="onSubmit()" [formGroup]="formAddPayment">
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">Cliente</span>
+                <input type="text" name="client" id="iClient" class="form-control" readonly="true"
+                   [value]="cliente" >
+
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text"> Deuda Total </span>
+                <input type="text" class="form-control" [(ngModel)]="model.saldo" formControlName="saldo" id="iSaldo"
+                    readonly="true" [value]="getSaldoActual()">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text"> Importe</span>
+                <input type="number" class="form-control" placeholder="0.00" [(ngModel)]="model.value"
+                    formControlName="value" [readonly]="this.readonly" required>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text"> Recibo N°</span>
+                <input type="text" class="form-control" placeholder="000" [(ngModel)]="model.recibo_n"
+                    formControlName="recibo_n" [readonly]="this.readonly">
+            </div>
+            <button class="btn btn-block btn-info" [disabled]="!formAddPayment.valid" type="submit"
+                id="btn-addpay">AGREGAR PAGO</button>
+
+        </form>
+    </div>
+
+</div>
+
+{{model|json}}

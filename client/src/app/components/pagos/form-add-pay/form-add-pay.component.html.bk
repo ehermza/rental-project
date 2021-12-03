@@ -1,0 +1,123 @@
+<div class="card border-primary mb-3">
+    <div class="card-header">
+        <h5 class="text-center text-primary">Registro de Pagos</h5>
+    </div>
+
+    <div class="card-body">
+        <!--             
+        <form (ngSubmit)="printPaymentsOnTable()" [formGroup]="formSelect">
+            <div class="input-group mb-3">
+                <select class="form-select" formControlName="container" [(ngModel)]="model.container">
+                    <option selected value="">Seleccionar Cliente</option>
+                    <option *ngFor="let ctner of dataSource;" [value]="ctner._id">
+                        {{ctner.id_container}}. {{ctner.rented_by}}
+                    </option>
+                </select>
+            </div>
+            <button class="btn btn-block btn-primary" [disabled]="!formSelect.valid" type="submit" id="btn-select">
+                VER PAGOS
+            </button>
+        </form>
+         -->
+
+    </div>
+
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <input type="text" class="form-control" name="fContainer" [(ngModel)]="fContainer"
+                    placeholder="Buscar Cliente...">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Client</th>
+                        <th>Info</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ctner of dataSource | filterCont: fContainer">
+                        <td>{{ctner.id_container}} </td>
+                        <td>{{ctner.rented_by}} </td>
+                        <!-- <td>{{ctner._id}} </td> -->
+                        <td>
+                            <button class="btn btn-outline-danger" (click)="printPaymentsOnTable(ctner._id)">
+                                Mostrar
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="card border-primary mb-3" [hidden]="this.readonly">
+
+    <div class="card-header">
+        <h5 class="text-center text-primary"> Ingresar Nuevo Pago</h5>
+    </div>
+
+    <div class="card-body">
+        <form (ngSubmit)="onSubmit()" [formGroup]="formAddPayment">
+
+            <div class="input-group mb-3">
+                <span class="input-group-text"> Saldo</span>
+                <input type="text" class="form-control" [(ngModel)]="model.saldo" formControlName="saldo"
+                    readonly="true" [value]="getSaldoActual()">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text"> Importe</span>
+                <input type="number" class="form-control" placeholder="0.00" [(ngModel)]="model.value"
+                    formControlName="value" [readonly]="this.readonly" required>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text"> Recibo N°</span>
+                <input type="text" class="form-control" placeholder="000" [(ngModel)]="model.recibo_n"
+                    formControlName="recibo_n" [readonly]="this.readonly">
+            </div>
+            <button class="btn btn-block btn-info" [disabled]="!formAddPayment.valid" type="submit"
+                id="btn-addpay">AGREGAR PAGO</button>
+
+        </form>
+    </div>
+
+</div>
+
+{{model|json}}
+
+<div>
+    <div class="card border-warning">
+        <div class="card-header">
+            <h5 class="text-center text-warning">Registrar nuevo periodo</h5>
+        </div>
+        <div class="card-body">
+            <!-- <form action="/deuda/charge" method="GET"> -->
+            <form (ngSubmit)="insertPerDebt()" [formGroup]="formDebt">
+                <div class="input-group mb-3">
+                    <select class="form-select" formControlName="per" [(ngModel)]="debt.per">
+                        <option selected value="">Elegir Periodo</option>
+                        <option *ngFor="let month of MESES; index as i" [value]="month">
+                            {{i + 1}}. {{month}}
+                        </option>
+                    </select>
+
+                </div>
+                <button class="btn btn-block btn-outline-warning" type="submit" id="btn-deudacharge">
+                    NUEVO PERIODO
+                </button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{{debt|json}}

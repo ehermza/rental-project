@@ -1,0 +1,57 @@
+
+<div class="container">
+  <h3 class="text-start text-muted"> {{title}} A Cta.Prox. $ {{this.rentalService.aCtaProxPayment}} </h3>
+
+</div>
+
+<table mat-table [dataSource]="this.rentalService.pagos" class="mat-elevation-z8 demo-table">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="paid_at">
+      <th mat-header-cell *matHeaderCellDef> Fecha </th>
+      <td mat-cell *matCellDef="let element" align="left"> {{element.paid_str}} </td>
+    </ng-container>
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="period">
+      <th mat-header-cell *matHeaderCellDef> Periodo </th>
+      <td mat-cell *matCellDef="let element"> {{element.period}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="client">
+      <th mat-header-cell *matHeaderCellDef> Cliente </th>
+      <td mat-cell *matCellDef="let element" align="right" > $ {{element.client}}.- </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="value">
+      <th mat-header-cell *matHeaderCellDef> Importe </th>
+      <td mat-cell *matCellDef="let element" > $ {{element.value}}.- </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="recibo_n">
+      <th mat-header-cell *matHeaderCellDef > Recibo N° </th>
+      <td mat-cell *matCellDef="let element"> R.{{element.recibo_n}} </td>
+    </ng-container>
+  
+    <!-- Action button -->
+    <ng-container matColumnDef="_id">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let element"> 
+          <!-- <a href="/pagos/delete/{{ element._id }}" mat-icon-button color="warn" > -->
+          <button (click)="deletePayment(element.recibo_n)" mat-icon-button color="warn" >
+              <mat-icon>delete_outline</mat-icon>
+          </button>
+        <!-- <a href="/pagos/delete/{{ element._id }}" class="btn btn-outline-danger"> Borrar</a> -->
+      </td>
+    </ng-container> 
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  {{this.rentalService.blEmptyTable}}

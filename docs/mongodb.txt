@@ -1,0 +1,3 @@
+> 
+db.rentals.updateOne({_id: ObjectId("61416eb5ecd1694de74eac36")}, {$set: {active: false}})
+

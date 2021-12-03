@@ -1,0 +1,6 @@
+
+const rentalSchema = new Schema({
+    number_ctner: Number,
+    name_client: String,
+    
+})

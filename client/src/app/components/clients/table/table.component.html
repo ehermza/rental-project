@@ -1,0 +1,57 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="id_container">
+    <th mat-header-cell *matHeaderCellDef > No. </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-raised-button color="" >
+        {{element.id_container}} 
+      </button>
+      </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="rented_by">
+    <th mat-header-cell *matHeaderCellDef> Cliente </th>
+    <td mat-cell *matCellDef="let element">
+        {{element.rented_by}} 
+      </td>
+  </ng-container>
+  
+  <!-- Name Column -->
+  <ng-container matColumnDef="price_tocharge">
+    <th mat-header-cell *matHeaderCellDef> Importe </th>
+    <td mat-cell *matCellDef="let element"> ${{ element.price_tocharge }}.- </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="active">
+    <th mat-header-cell *matHeaderCellDef> Active </th>
+    <td mat-cell *matCellDef="let element"> {{element.active}} </td>
+  </ng-container>
+
+  <!-- Action button -->
+  <ng-container matColumnDef="_id">
+    <th mat-header-cell *matHeaderCellDef> Editar </th>
+    <td mat-cell *matCellDef="let element"> 
+      <a href="/containers/edit/{{ element._id }}" mat-icon-button color="primary">
+        <mat-icon>format_list_bulleted</mat-icon>
+      </a>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="atr">
+    <th mat-header-cell *matHeaderCellDef> Pagos </th>
+    <td mat-cell *matCellDef="let element"> 
+      <a href="/containers/payments/{{ element._id }}" mat-icon-button color="primary">
+        <mat-icon>request_quote</mat-icon>
+      </a>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

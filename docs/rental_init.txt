@@ -1,0 +1,36 @@
+
+db.rentals.insertOne(
+{
+  "last_payment": {
+    "period": "ENE",
+    "a_cta": 0
+  },
+  "id_client": "619b0d061c466e0ddaf2839b",
+  "id_container": "619b0cc80f6fbfd1e705e984",
+  "active": true,
+  "date_init": "2021-09-17T19:27:38.765Z",
+  "deuda_total": 0,
+  "deuda_register": [],
+  "pagos_total": 0,
+  "pagos_register": [],
+    "last_deuda_per": ""
+})
+
+======================================================
+
+db.rentals.find({ "id_container": "619b0cc80f6fbfd1e705e984" })
+
+======================================================
+
+db.rentals.updateOne(
+{ "id_container": "619d47bbd180170da8b51c8a" } ,
+{ $set: 
+    {
+      "last_payment": {
+        "period": "ENE",
+        "a_cta": 0
+      }
+    }
+})
+
+

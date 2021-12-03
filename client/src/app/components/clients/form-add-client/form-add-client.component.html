@@ -1,0 +1,43 @@
+<!-- {{ model|json }} -->
+<div class="card">
+    <div class="card-header">
+        <h3 class="text-center">Agregar nuevo cliente</h3>
+    </div>
+    <div class="card-body">
+        <form (ngSubmit)="submit()"  [formGroup]="formAddClient">
+
+            <div class="input-group mb-3">
+                <select class="form-select" [(ngModel)]="model.id_container" formControlName="id_container" required>
+                    <option selected [value]="">Elegir Contenedor</option>
+                    <option *ngFor="let item of dataSource; index as i" [value]="item.id_container">
+                        Container number {{item.id_container}}
+                    </option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">Cliente: </span>
+                <input type="text" class="form-control" placeholder="Apellido, Nombre"
+                 [(ngModel)]="model.rented_by" formControlName="rented_by" required>
+            </div>
+            <!-- ** VALIDATE ** -->
+<!--             <div *ngIf="rented_by.invalid && (rented_by.dirty || rented_by.touched)" class="alert">
+                <div *ngIf="rented_by.errors?.required">
+                    Client is required.
+                </div>
+ -->
+ 
+ <div class="input-group mb-3">
+     <span class="input-group-text">Importe $</span>
+     <input type="number" class="form-control" placeholder="0.00" step="1"
+     [(ngModel)]="model.price_tocharge" formControlName="price_tocharge" required>
+    </div>
+
+    <input type="hidden" formControlName="active" value="true" ([ngModel])="model.active" />
+    
+    <button class="btn btn-block btn-primary" [disabled]="!formAddClient.valid" type="submit" id="btn-addctdor">ACEPTAR</button>
+    
+</form>
+<!-- {{ formAddClient.value | json }} -->
+    </div>
+</div>

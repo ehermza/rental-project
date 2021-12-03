@@ -1,0 +1,28 @@
+
+[]  /containers/edit
+        URGENT TO CORRECT! output Saldo Actual don't print the value. 
+  
+[]    /pagos
+    'Delete' button, Create that!
+
+[]   /pagos
+     Insert input 'period' for input the paid month. Placeholder value: the current month. 
+
+[]   BUG TO CORRECT!
+    ngOnChange() don't work when ends charge page.
+
+[X]  /clients
+    To Create the client, must to call service to create the new Rental object on database,
+
+[]	Before create the Client is necessary verify that Container linked is not active (false)
+
+[]  /clients
+    When the user try to register a new client, is necessary create an input 'date init rental'
+    Cdo el usuario quiera ingresar nuevo cliente, es necesario agregar un input date en el form containers.ejs para registrar fecha que comenzó el alquiler. 
+
+[]  /clients/all
+    FORM to select, which list all clients, including the clients not active. 
+        To select client, the server return the payments list (from the beginning) and the web must to print a table with detail payments.        
+    OR...
+[]  /clients/inactives
+  Create a web page to print the inactives Clients. 

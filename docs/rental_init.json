@@ -1,0 +1,29 @@
+db.rentals.findOneAndDelete(
+{"id_container": "614165ea08cdba49f58efecd"}
+)
+
+db.rentals.findOne(
+{"id_container": "614165ea08cdba49f58efecd"}
+)
+
+db.rentals.insertOne({
+  "id_client": "6144ec2aa12b786e1eb77512",
+  "id_container": "614165ea08cdba49f58efecd",
+  "active": true,
+  "date_init": "2021-09-17T19:27:38.765Z",
+  "deuda_total": 0,
+  "deuda_register": [
+  ],
+  "pagos_total": 0,
+  "pagos_register": [
+  ],
+  "last_payment": {
+    "period": "ENE",
+    "a_cta": 0
+  },
+    "last_deuda_per": ""
+})
+
+GET Method: INSERT DEBT (Change to POST)
+"http://localhost:5300/api/rental/insertdebt/614165ea08cdba49f58efecd"
+

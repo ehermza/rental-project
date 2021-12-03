@@ -1,0 +1,61 @@
+==============================( POST )====================================
+
+post:
+Insert a payment to one client:
+    http://localhost:5300/api/rental/pagos
+    {
+	    "container": "619d47bbd180170da8b51c8a", 
+	    "value": 37000, 
+	    "recibo_n": "0231" 
+    }
+
+POST: not api-client
+Create a rental object.
+    http://localhost:5300/api/rental/
+    {
+        ptr_client: 
+        ptr_ctner: "619d47bbd180170da8b51c8a"
+        client_name: "ARQ. ADRIAN VAZQUEZ"
+        ctner_number: 29
+    }
+
+POST: not applicate to api-client 
+    Create one client object, without rental obj.
+        http://localhost:5300/api/clients/
+
+
+===============================( GET )=====================================
+
+get:
+Get All Payments of current Client, by Id-Ctner 
+    http://localhost:5300/api/rental/pagos/61a44e02a0e64bad744286da
+get:
+Insert one debt to all active clients.
+    http://localhost:5300/api/rental/insertdebt/
+
+get:
+Get Rental Balance By Id-Container:
+    http://localhost:5300/api/rental/saldo/61a44e02a0e64bad744286da    
+
+get:
+Get Rental Object by Id-Container.
+    http://localhost:5300/api/rental/container/614165ea08cdba49f58efecd
+
+get:
+Get Container Object by Number Ctner.
+    http://localhost:5300/api/containers/number/07
+
+get:
+Get All Clients, active.
+    http://localhost:5300/api/clients/
+
+=============================( DELETE )====================================
+DELETE:
+deletePaymentService()
+    http://localhost:5300/api/rental/pagos/0999&614165ea08cdba49f58efecd
+
+
+=============================( UPDATE )====================================
+UPDATE:
+    update one client object,
+        http://localhost:5300/api/clients/

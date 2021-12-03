@@ -1,0 +1,44 @@
+POST: 
+    insertPaymentService()
+http://localhost:5300/api/rental/pagos
+{
+	"container": "614165ea08cdba49f58efecd", 
+	"value": 6500, 
+	"recibo_n": "0666" 
+}
+
+*******************************************************
+GET: (URGENT TO CHANGE!)
+    insertDebtService()
+http://localhost:5300/api/rental/insertdebt/614165ea08cdba49f58efecd
+
+GET::
+    getRentalByCtner()
+http://localhost:5300/api/rental/container/614165ea08cdba49f58efecd
+*******************************************************
+
+
+DELETE::
+    deletePaymentService()
+http://localhost:5300/api/rental/pagos/0999&614165ea08cdba49f58efecd
+*******************************************************
+
+
+PUT::
+
+db.rentals.findOneAndUpdate(
+{id_container:"614165ea08cdba49f58efecd"},
+{
+    $set: {
+    last_payment: {period: "SEP", a_cta: -1}
+    }
+})
+
+db.rentals.findOne(
+    deuda_register: {
+        period: ''
+    }
+)
+
+
+

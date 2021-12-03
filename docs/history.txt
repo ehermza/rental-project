@@ -1,0 +1,20 @@
+Sept.15th. 2021
+	Creating Alerts to register a new payment, or create a new client.
+
+Sept.13th
+	The user Can insert new payment and see the payments list of client.
+
+Sept.09th
+	Get payments list from One active Container,
+	Insert Rental object to create a new Client is working on client.  
+
+Sept.08th
+	Creating model 'Rental' object to register payments from one client.
+
+Aug.30th 2021
+	Include validators to add-payment-form, for prevent the incorrect and empty values.
+	Generate Component: add-payement-form 
+
+Aug.27th
+	Testing SweetAlert2 imported module to show alerts.
+	
