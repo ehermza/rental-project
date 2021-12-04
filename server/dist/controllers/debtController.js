@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getListDebts = void 0;
+exports.setDebtByPaymentController = exports.getListDebts = void 0;
 const debtService_1 = require("../services/debtService");
 function getListDebts(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -26,3 +26,12 @@ function getListDebts(req, res) {
     });
 }
 exports.getListDebts = getListDebts;
+function setDebtByPaymentController(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+        }
+        catch (error) {
+        }
+    });
+}
+exports.setDebtByPaymentController = setDebtByPaymentController;

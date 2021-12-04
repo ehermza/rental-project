@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getDebtInfoService = exports.updateDebtService = exports.createDebtService = void 0;
+exports.getDebtInfoService = exports.updateDebtService = exports.updateDebtByPaymentService = exports.createDebtService = void 0;
 const mongodb_1 = require("mongodb");
 const Debt_1 = __importDefault(require("../models/Debt"));
 let objRental = undefined;
@@ -55,6 +55,26 @@ function getValueDebt() {
     });
     return importe;
 }
+function updateDebtByPaymentService(id_debt, importe) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const objDebt = yield Debt_1.default.findById(id_debt);
+            if (!objDebt) {
+                return null;
+            }
+            objDebt.current_debt -= importe;
+            objDebt.overdue_debt -= importe;
+            console.log("==========(DEBT BEFORE PAYMENT)=========");
+            console.log(importe);
+            console.log(objDebt);
+            return yield objDebt.save();
+        }
+        catch (error) {
+            return null;
+        }
+    });
+}
+exports.updateDebtByPaymentService = updateDebtByPaymentService;
 function updateDebtService(alquiler) {
     return __awaiter(this, void 0, void 0, function* () {
         try {

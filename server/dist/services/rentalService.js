@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.insertDebtService = exports.insertPaymentService = exports.createAlquilerService = exports.getRentalObjectServ = exports.getPagosByClientService = exports.getPaymentByCtnerServ = exports.deletePaymentByCtnerServ = exports.getPagosService = exports.getSaldoByCtnerService = exports.getRentalByCtnerService = exports.getRentalByIdService = exports.getMonthNumberService = void 0;
 const Rental_1 = __importDefault(require("../models/Rental"));
 const mongodb_1 = require("mongodb");
-const strmonth = "ENE,FEB,MAR,ABR,MAY,JUN,JUL,AGO,SEP,OCT,NOV,DIC";
+const strmonth = "OCT,NOV,DIC,ENE,FEB,MAR,ABR,MAY,JUN,JUL,AGO,SEP";
 function getMonthNumberService(idCtner) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -193,7 +193,7 @@ function createAlquilerService(idClient, idCtner, idDebt, fecha) {
                 pagos_total: 0,
                 pagos_register: [],
                 last_payment: {
-                    a_cta: 0, period: "ENE"
+                    a_cta: 0, period: "OCT"
                 }
             });
             // const rental: IRental = alquiler;
@@ -208,7 +208,7 @@ function createAlquilerService(idClient, idCtner, idDebt, fecha) {
 }
 exports.createAlquilerService = createAlquilerService;
 function queryNextMonth(period) {
-    var res = "ENE";
+    var res = "OCT";
     // const fromdatabase: string = objRent.last_payment.period;
     const meses = strmonth.split(',');
     for (var i = 0; i < 12; i++) {
@@ -246,16 +246,21 @@ function insertPagoRegister(objRent, importe, mes, recibo) {
         yield objRent.save();
     });
 }
-function insertPaymentService(objRent, body) {
+// export async function insertPaymentService(objRent: IRental, body: any):
+function insertPaymentService(idclient, body) {
     return __awaiter(this, void 0, void 0, function* () {
         /**
          * Client Payment: Try to register period correct to set payment.
          *     Date: Nov.09th 2021  Author: EHER/2021
          */
         try {
+            const { container, value, recibo_n } = body;
+            const objRent = yield getRentalObjectServ(idclient, container);
+            if (!objRent) {
+                return null;
+            }
             console.log("===========(ALQUILER)===========");
             console.log(objRent);
-            const { container, value, recibo_n } = body;
             const cta_anter = objRent.last_payment.a_cta;
             const value_paid = value + cta_anter;
             const PerOriginal = objRent.last_payment.period;
@@ -283,7 +288,7 @@ function insertPaymentService(objRent, body) {
             return objRent;
         }
         catch (error) {
-            return -1;
+            return null;
         }
     });
 }

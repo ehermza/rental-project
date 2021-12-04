@@ -14,6 +14,7 @@ const mongodb_1 = require("mongodb");
 const rentalService_1 = require("../services/rentalService");
 const containerService_1 = require("../services/containerService");
 const debtService_1 = require("../services/debtService");
+const debtService_2 = require("../services/debtService");
 function getPaymentByCtnerCtrl(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         /**
@@ -97,23 +98,23 @@ exports.getPagosCtrl = getPagosCtrl;
 function createPaymentCtrl(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            // const { container, value, recibo_n } = req.body;   
-            const { container } = req.body;
+            const { container, value } = req.body;
             /** const container is 'id_container' property
              *      from Container class */
-            console.log(' createPaymentCtrl (req.body) ', req.body);
+            console.log(' (body) ', req.body);
             const objCtner = yield containerService_1.getContainerOneServ(new mongodb_1.ObjectID(container));
             if (!objCtner) {
                 res.status(714).json({ message: 'Container object not defined!' });
                 return;
             }
             const idclient = objCtner.rented_by_id;
-            const objRent = yield rentalService_1.getRentalObjectServ(idclient, container);
-            if (!objRent) {
-                res.status(710).json({ message: 'Rental object is null or undefined.' });
+            const alquiler = yield rentalService_1.insertPaymentService(idclient, req.body);
+            if (!alquiler) {
+                res.status(710).json({ message: 'Can\'t create Payment: Rental Object is null or undefined.' });
                 return;
             }
-            const alquiler = yield rentalService_1.insertPaymentService(objRent, req.body);
+            const id_debt = alquiler.id_debtinfo.toString();
+            yield debtService_1.updateDebtByPaymentService(id_debt, parseFloat(value));
             res.json(alquiler);
         }
         catch (error) {
@@ -130,7 +131,7 @@ function createAlquilerCtrl(req, res) {
             console.log("=========(REQ.BODY)=========");
             console.log(req.body);
             // const fecha = Date.now();
-            const debtinfo = yield debtService_1.createDebtService(ctner_number, client_name);
+            const debtinfo = yield debtService_2.createDebtService(ctner_number, client_name);
             if (!debtinfo) {
                 res.status(711);
                 return;
@@ -222,7 +223,7 @@ function insertDebtByCtner(ctnerObj) {
             /**
              * Update Object Debt to print Debts table.
              */
-            yield debtService_1.updateDebtService(alquiler);
+            yield debtService_2.updateDebtService(alquiler);
             return 0;
         }
         catch (error) {
