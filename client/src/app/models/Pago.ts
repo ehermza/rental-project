@@ -1,40 +1,42 @@
-
-export interface Pago 
-{
-    client: string ;
-    value?: number;
-    month_paid: string;
-    paid_at: Date;
-    paid_str: string;
-    id_container: Number;
-    recibo_n?: string;
-    client_name?: string;
-}
 /**
- * class deprecated! urgent: delete it
+ * Urgent to Delete: Dec.05th,2021
  */
-export class Pago 
-{
-    client: string = "";
-    value?: number;
-    month_paid: string = "";
-    paid_at: Date = new Date();
-    paid_str: string= '';
-    id_container: Number= 0;
-    recibo_n?: string;
-    client_name?: string;
+// export interface Pago 
+// {
+//     client: string ;
+//     value?: number;
+//     month_paid: string;
+//     paid_at: Date;
+//     paid_str: string;
+//     id_container: Number;
+//     recibo_n?: string;
+//     client_name?: string;
+// }
+// /**
+//  * class deprecated! urgent: delete it
+//  */
+// export class Pago 
+// {
+//     client: string = "";
+//     value?: number;
+//     month_paid: string = "";
+//     paid_at: Date = new Date();
+//     paid_str: string= '';
+//     id_container: Number= 0;
+//     recibo_n?: string;
+//     client_name?: string;
 
-    constructor() {}
+//     constructor() {}
 
-    setClientName(nombre:string) {
-        this.client_name= nombre;
-    }
+//     setClientName(nombre:string) {
+//         this.client_name= nombre;
+//     }
     
-    setCtnerNumber(ctnerNumber:Number){
-        this.id_container = ctnerNumber;
-    }
+//     setCtnerNumber(ctnerNumber:Number){
+//         this.id_container = ctnerNumber;
+//     }
 
-    getIdClient() {
-        return this.client;
-    }
-}
+//     getIdClient() {
+//         return this.client;
+//     }
+// }

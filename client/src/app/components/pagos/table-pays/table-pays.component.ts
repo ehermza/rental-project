@@ -1,12 +1,12 @@
 // import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { format } from 'date-fns';
+// import { format } from 'date-fns';
 // import { pipe } from "rxjs";
-import { map } from "rxjs/operators";
-import { Pago } from 'src/app/models/Pago';
+// import { map } from "rxjs/operators";
+// import { Pago } from 'src/app/models/Pago';
 
-import { PagoService } from 'src/app/services/pago.service';
+// import { PagoService } from 'src/app/services/pago.service';
 import { RentalService } from 'src/app/services/rental.service';
 import Swal from 'sweetalert2';
 
@@ -25,7 +25,7 @@ export class TablePaysComponent implements OnInit {
   title: string = "Registro de Pagos";
   
   constructor(
-    private pagoService: PagoService,
+    // private pagoService: PagoService,
     public rentalService: RentalService,
     private router: Router
   ) { }
@@ -55,6 +55,8 @@ export class TablePaysComponent implements OnInit {
       });
   }
 }
+/*
+Urgent to Delete! Date: Dec.05th,2021
 
 function filtrar(objeto: Pago) {
   const dt = new Date(objeto.paid_at);
@@ -62,7 +64,7 @@ function filtrar(objeto: Pago) {
   objeto.paid_str = format(dt, 'dd/MM/yyyy');
   return objeto;
 }
-
+*/
 export async function fireSwal(objeto: any)
  {
   const { title, text, icon, timer } = objeto;

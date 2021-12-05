@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { Contenedor } from 'src/app/models/Contenedor';
 import { Router } from '@angular/router';
-import { Container } from 'src/app/models/container';
+// import { Container } from 'src/app/models/Contenedor';
 
 
 @Component({
@@ -17,13 +17,7 @@ export class FormContainerComponent implements OnInit {
 
     idCtner:string= '';
     // model:Contenedor = new Contenedor(true);
-    model: Container = {
-      id_container: '',
-      price_tocharge: -1,
-      rented_by: '',
-      rented_by_id: '0',
-      active: true
-    }
+    model: Contenedor = new Contenedor(true);
     submitted = false;
 
     constructor(
@@ -42,7 +36,7 @@ export class FormContainerComponent implements OnInit {
 
     }
 
-    setUnlinkValue(obj:Container) {
+    setUnlinkValue(obj:Contenedor) {
       obj.rented_by = '';
       obj.rented_by_id= '0';
       obj.active = false;

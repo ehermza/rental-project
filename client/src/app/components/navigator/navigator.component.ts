@@ -13,7 +13,7 @@ export class NavigatorComponent implements OnInit {
 
   constructor(private route: ActivatedRoute) {}
 
-  title: string= "RENTAL WEB by EHER";
+  title: string= "ALQUILER CONTAINERS";
 
   ngOnInit(): void
   {

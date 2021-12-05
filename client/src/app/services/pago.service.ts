@@ -11,15 +11,16 @@ export class PagoService {
     private http:HttpClient
   ) { }
 
-  getPagosAll() {
-    return this.http.get('/api/pagos/');
-  }
+  // getPagosAll() {
+  //   // return this.http.get('/api/pagos/');
+  // }
 
-  createPago(body:any){
-    return this.http.post('/api/pagos/', body);
-  }
+  // createPago(body:any){
+  //   return this.http.post('/api/pagos/', body);
+  // }
 
-  getPagoByClient(idClient:string, nCtner:Number) {
-    return this.http.get(`/api/pagos/${idClient}&${nCtner}`);
-  }
+  // getPagoByClient(idClient:string, nCtner:Number) {
+  //   return this.http.get(`/api/pagos/${idClient}&${nCtner}`);
+  // }
+  
 }
