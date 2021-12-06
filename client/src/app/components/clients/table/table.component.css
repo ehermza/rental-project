@@ -1,9 +1,12 @@
 table {
     width: 80%;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: large;
 }
-
+#filtro {
+  padding: 15px;
+}
 .demo-table {
     width: 100%;
   }
@@ -24,7 +27,7 @@ table {
 
   .mat-column-rented_by {
     padding-left: 16px;
-    font-size: 16px;
+    font-size: 18px;
   }
   
   .mat-column-demo-weight {

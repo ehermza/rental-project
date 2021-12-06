@@ -16,6 +16,7 @@ import { ComponentsModule } from './components/components.module';
 @NgModule({
   declarations: [
     AppComponent,
+    // PageInsertPeriodComponent,
     // FilterContPipe,
   ],
   imports: [

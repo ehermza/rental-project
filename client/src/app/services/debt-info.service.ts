@@ -16,4 +16,8 @@ export class DebtInfoService {
     return this.http.get("/api/informe");
     
   }
+
+  insertDebtPeriod() {
+    return this.http.get("/api/rental/insertdebt");
+  }
 }

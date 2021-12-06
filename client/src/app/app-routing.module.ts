@@ -5,6 +5,7 @@ import { PagePaysComponent } from './views/page-pays/page-pays.component';
 import { PageProfileComponent } from './views/page-profile/page-profile.component';
 import { PagePagosComponent } from './views/page-pagos/page-pagos.component';
 import { PageDebtsComponent } from './views/page-debts/page-debts.component'
+import { PageInsertPeriodComponent } from './views/page-insert-period/page-insert-period.component';
 
 // import { TableComponent } from './components/table/table.component';
 
@@ -20,6 +21,8 @@ const routes: Routes = [
   
   { path: 'pagos', component: PagePaysComponent },
   { path: 'pagos/alert/:id', component: PageClientComponent },
+
+  { path: 'insertper', component: PageInsertPeriodComponent},
 
   { path: '**', pathMatch: 'full', redirectTo: 'clients' }
 ];

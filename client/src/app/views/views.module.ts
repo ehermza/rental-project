@@ -12,6 +12,7 @@ import { PageProfileComponent } from './page-profile/page-profile.component';
 import { PagePaysComponent } from './page-pays/page-pays.component';
 import { PagePagosComponent } from './page-pagos/page-pagos.component';
 import { PageDebtsComponent } from './page-debts/page-debts.component';
+import { PageInsertPeriodComponent } from './page-insert-period/page-insert-period.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PageDebtsComponent } from './page-debts/page-debts.component';
     PageProfileComponent,
     PagePaysComponent,
     PagePagosComponent,
-    PageDebtsComponent    // Nov-28th, 2021
+    PageDebtsComponent,       // Nov-28th, 2021
+    PageInsertPeriodComponent // Dec.05th, 2021
   ],
   imports: [
     CommonModule,

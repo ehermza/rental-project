@@ -1,0 +1,47 @@
+<!-- 
+<mat-form-field appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+  </mat-form-field>
+   -->
+   <input type="text" (keyup)="applyFilter($event)" name="" placeholder="Filter" id="" #input>
+
+   <div class="container">
+       TOTAL PROX. MES: $ {{VALUE_PER_TOTAL}}
+   </div>
+   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+    <!-- Number Ct. Column -->
+    <ng-container matColumnDef="number_ctner">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.number_ctner}} </td>
+    </ng-container>
+  
+    <!-- Name Client Column -->
+    <ng-container matColumnDef="name_client">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element"> {{element.name_client}} </td>
+    </ng-container>
+  
+    <!--  Column -->
+    <!-- <ng-container matColumnDef="current_debt">
+      <th mat-header-cell *matHeaderCellDef> Deuda Total </th>
+      <td mat-cell *matCellDef="let element"> {{element.current_debt|currency}} </td>
+    </ng-container> -->
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="price_rental">
+      <th mat-header-cell *matHeaderCellDef> Mensual </th>
+      <td mat-cell *matCellDef="let element"> {{element.price_rental|currency}} </td>
+    </ng-container>
+
+      <!-- Deuda Anter. Column -->
+      <!-- <ng-container matColumnDef="overdue_debt">
+        <th mat-header-cell *matHeaderCellDef> Atras </th>
+        <td mat-cell *matCellDef="let element"> {{element.overdue_debt|currency}} </td>
+      </ng-container> -->
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  

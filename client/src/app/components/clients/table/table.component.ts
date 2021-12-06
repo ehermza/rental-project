@@ -1,9 +1,6 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
-import { filter } from 'rxjs/operators';
-
+import { MatTableDataSource } from '@angular/material/table';
 import { ContainersService } from 'src/app/services/containers.service';
-
-// import DeleteIcon from '@mui/icons-material/Delete';
 
 @Component({
   selector: 'app-table',
@@ -13,11 +10,16 @@ import { ContainersService } from 'src/app/services/containers.service';
 
 export class TableComponent implements OnInit {
   // @HostBinding('class') classes = 'row';
-
-  // displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  // dataSource = ELEMENT_DATA;
-  displayedColumns: string[] = ['id_container','rented_by','price_tocharge','active', '_id', 'atr'];
-  dataSource: any= [];
+  displayedColumns: string[] = [
+    'id_container',
+    'rented_by',
+    'price_tocharge',
+    'active',
+     '_id', 
+     'atr'
+    ];
+  DATOS: any = [];
+  dataSource: any;
   list:any= [];
   
   constructor(private gameService: ContainersService) {
@@ -25,7 +27,7 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     this.getContainers();
-    // console.log(this.dataSource);
+    // this.aviso = Date.now().toString();
   }
   
   getContainers() {
@@ -33,13 +35,21 @@ export class TableComponent implements OnInit {
     .subscribe(
       (res) => {
         this.list = res;
-        this.dataSource = this.list.filter(filtrar);
-        // console.log(this.games);
+        this.DATOS = this.list.filter(filtrar);
+        this.dataSource= new MatTableDataSource(this.DATOS);
+        // this.dataSource = this.list.filter(filtrar);
         },
         (err) => console.error(err)
       );
   }
-
+  aviso: string = "";
+  
+  applyFilter(event: Event) {
+    
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    // this.aviso = filterValue;
+  }
 }
 
 function filtrar(objeto:any) {
