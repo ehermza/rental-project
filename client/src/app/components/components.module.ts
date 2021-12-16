@@ -19,6 +19,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { FilterContPipe } from '../pipes/filter-cont.pipe';
 import { DebtTableComponent } from './debt-table/debt-table.component';
 import { InsertDebtComponent } from './insert-debt/insert-debt.component';
+import { OptionsComponent } from './insert-debt/options/options.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { InsertDebtComponent } from './insert-debt/insert-debt.component';
     FilterContPipe,
     DebtTableComponent,
     InsertDebtComponent,
+    OptionsComponent,
 
   ],
   imports: [
@@ -55,7 +57,8 @@ import { InsertDebtComponent } from './insert-debt/insert-debt.component';
     FormAddPayComponent,  // page-pays
     TablePaysComponent,   // page-pays
     DebtTableComponent,
-    InsertDebtComponent   // Date: Dec.05th,2021
+    InsertDebtComponent,   // Date: Dec.05th,2021
+    OptionsComponent,
   ]
 })
 export class ComponentsModule { }

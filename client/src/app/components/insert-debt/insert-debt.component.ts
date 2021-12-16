@@ -18,6 +18,7 @@ export class InsertDebtComponent implements OnInit
   
   DEUDAS: any = [];
   VALUE_PER_TOTAL: number= 0;
+  clickedRows = new Set<IDebt>();  
   // TotalDebtsOneMonth: number = 0;
 
   constructor(
