@@ -18,12 +18,13 @@ export class InsertDebtComponent implements OnInit
   
   DEUDAS: any = [];
   VALUE_PER_TOTAL: number= 0;
+  totalPerClicked: number= 0;
   clickedRows = new Set<IDebt>();  
   // TotalDebtsOneMonth: number = 0;
 
   constructor(
     private route: ActivatedRoute,
-    private debtInfoSer: DebtInfoService
+    public debtInfoSer: DebtInfoService
   ) { }
 
   displayedColumns: string[] = [
@@ -40,6 +41,18 @@ export class InsertDebtComponent implements OnInit
     this.getListaDeudas();
   }
 
+  Clickear() {
+    // console.log(Fila.price_rental);
+    console.log(this.clickedRows);
+
+    this.totalPerClicked= 0;
+    this.clickedRows.forEach( debt => {
+      this.totalPerClicked+= debt.price_rental;
+    });
+    this.debtInfoSer.VALUE_PER_CLICK= this.totalPerClicked;
+    // console.log(this.totalPerClicked);
+  }
+  
   sumarDebts(): number 
   {
     const debitos:IDebt[] = this.DEUDAS;

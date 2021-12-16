@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { DebtInfoService } from 'src/app/services/debt-info.service';
+
 @Component({
   selector: 'app-options',
   templateUrl: './options.component.html',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OptionsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public debtInfoSer:DebtInfoService) { }
 
   ngOnInit(): void {
   }

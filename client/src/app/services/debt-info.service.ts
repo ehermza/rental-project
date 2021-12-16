@@ -6,15 +6,16 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DebtInfoService {
-  
 
-  constructor(private http:HttpClient) { 
-    
+  VALUE_PER_CLICK: number = 0;
+
+  constructor(private http: HttpClient) {
+
   }
 
   getListDebts() {
     return this.http.get("/api/informe");
-    
+
   }
 
   insertDebtPeriod() {
