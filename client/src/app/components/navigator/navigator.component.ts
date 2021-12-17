@@ -43,6 +43,14 @@ export class NavigatorComponent implements OnInit {
     var message, title = "";
     var objeto = {};
     switch (alertNumber) {
+      case '226':
+        objeto = {
+          title: 'Nuevo Periodo',
+          text: 'Se ha cargado el nuevo periodo a la base datos.',
+          icon: 'success',
+          timer: MSTIMER
+        }
+        break;
       case '430':
         objeto = {
           title: "Error al agregar cliente",

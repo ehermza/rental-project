@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { DebtInfoService } from 'src/app/services/debt-info.service';
 
@@ -9,9 +10,23 @@ import { DebtInfoService } from 'src/app/services/debt-info.service';
 })
 export class OptionsComponent implements OnInit {
 
-  constructor(public debtInfoSer:DebtInfoService) { }
+  probando: string = "";
+
+  constructor(
+    public debtInfoSer:DebtInfoService,
+    private router:Router
+    ) { }
 
   ngOnInit(): void {
   }
 
+  insertar():void {
+
+    this.probando = "WORKS!";
+    this.debtInfoSer.insertDebtPeriod().subscribe(
+       (res) => {
+        this.router.navigate(['/clients/alert/226']);        
+      }
+    )
+  }
 }

@@ -1,6 +1,20 @@
 <div class="container">
-    <ul>
-    <p> VALOR: {{ debtInfoSer.VALUE_PER_CLICK }} </p>
-    </ul>
+    <div class="importe">
+        <ul>
+            TOTAL A COBRAR/ MES:
+            <div class="valor">
+                AR{{ debtInfoSer.VALUE_PER_TOTAL | currency}}
 
+            </div>
+        </ul>
+    </div>
+    <ul>
+        <p> VALOR: {{ debtInfoSer.VALUE_PER_CLICK }} </p>
+    </ul>
+    
+    <ul>BUTTON: {{ probando }}</ul>
+
+    <div class="btn btn-info" (click)="insertar()" >
+        NUEVO PERIODO
+    </div>
 </div>

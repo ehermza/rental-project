@@ -5,12 +5,12 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class DebtInfoService {
-
+export class DebtInfoService
+ {
   VALUE_PER_CLICK: number = 0;
+  VALUE_PER_TOTAL: number = 0;
 
   constructor(private http: HttpClient) {
-
   }
 
   getListDebts() {

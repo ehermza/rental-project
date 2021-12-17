@@ -30,8 +30,8 @@ export class InsertDebtComponent implements OnInit
   displayedColumns: string[] = [
     'number_ctner', 
     'name_client', 
-    // 'current_debt',
     'price_rental',
+    // 'current_debt',
     // 'overdue_debt'
   ];
   // dataSource = new MatTableDataSource(this.DEUDAS);
@@ -71,7 +71,7 @@ export class InsertDebtComponent implements OnInit
         (res) => {
           this.DEUDAS = res;
           this.dataSource = new MatTableDataSource(this.DEUDAS);
-          this.VALUE_PER_TOTAL = this.sumarDebts();
+          this.debtInfoSer.VALUE_PER_TOTAL = this.sumarDebts();
 
           console.log(this.DEUDAS);
         },
