@@ -12,14 +12,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteContainerCtrl = exports.updateContainerCtrl = exports.insertContainersController = exports.createContainerCtrl = exports.getContainerOneCtrl = exports.getContbyNumberCtrl = exports.getContainersCtrl = void 0;
+exports.deleteContainerCtrl = exports.updateContainerCtrl = exports.insertContainersController = exports.createContainerCtrl = exports.getContainerOneCtrl = exports.getContbyNumberCtrl = exports.getContainersCtrl = exports.getCurrentPerController = void 0;
 const Container_1 = __importDefault(require("../models/Container"));
 const mongodb_1 = require("mongodb");
 const containerService_1 = require("../services/containerService");
+function getCurrentPerController(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const per = yield (0, containerService_1.getCurrentPerService)();
+            res.json(per);
+        }
+        catch (error) {
+            res.status(589).json({ status: 589, message: 'Failed to try find current debt period from database' });
+        }
+    });
+}
+exports.getCurrentPerController = getCurrentPerController;
 function getContainersCtrl(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const containers = yield containerService_1.getContainersServ();
+            const containers = yield (0, containerService_1.getContainersServ)();
             res.json(containers);
         }
         catch (error) {
@@ -33,7 +45,7 @@ function getContbyNumberCtrl(req, res) {
         try {
             const { idctner } = req.params;
             console.log(`req.params: idctner ${idctner}`);
-            const client = yield containerService_1.getContByNumberService(parseInt(idctner));
+            const client = yield (0, containerService_1.getContByNumberService)(parseInt(idctner));
             console.log(`RE: getContbyNumberCtrl: ${client}`);
             res.json(client);
         }
@@ -47,7 +59,7 @@ function getContainerOneCtrl(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const { id } = req.params;
-            const container = yield containerService_1.getContainerOneServ(new mongodb_1.ObjectID(id));
+            const container = yield (0, containerService_1.getContainerOneServ)(new mongodb_1.ObjectID(id));
             res.json(container);
         }
         catch (error) {
@@ -68,7 +80,7 @@ function createContainerCtrl(req, res) {
                 rented_by,
                 active
             });
-            yield containerService_1.createContainerServ(container);
+            yield (0, containerService_1.createContainerServ)(container);
             res.json(container);
         }
         catch (error) {
@@ -88,7 +100,7 @@ function insertContainersController(req, res) {
                 rented_by: '',
                 active: false
             });
-            yield containerService_1.createContainerServ(container);
+            yield (0, containerService_1.createContainerServ)(container);
             res.json(container);
         }
         catch (error) {
@@ -103,7 +115,7 @@ function updateContainerCtrl(req, res) {
          */
         try {
             const { id } = req.params;
-            const container = yield containerService_1.updateContainerServ(new mongodb_1.ObjectID(id), req.body);
+            const container = yield (0, containerService_1.updateContainerServ)(new mongodb_1.ObjectID(id), req.body);
             console.log(container);
             res.json(container);
         }
@@ -117,7 +129,7 @@ function deleteContainerCtrl(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const { id } = req.params;
-            const container = yield containerService_1.deleteContainerServ(new mongodb_1.ObjectID(id));
+            const container = yield (0, containerService_1.deleteContainerServ)(new mongodb_1.ObjectID(id));
             res.json(container);
         }
         catch (error) {

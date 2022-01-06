@@ -7,7 +7,7 @@ const ContainerSchema = new mongoose_1.Schema({
     description: { type: String, default: "" },
     price_tocharge: Number,
     rented_by: String,
-    rented_by_id: { type: String, default: uuidv4_1.uuid() },
+    rented_by_id: { type: String, default: (0, uuidv4_1.uuid)() },
     active: { type: Boolean, default: false }
 });
-exports.default = mongoose_1.model('container', ContainerSchema);
+exports.default = (0, mongoose_1.model)('container', ContainerSchema);

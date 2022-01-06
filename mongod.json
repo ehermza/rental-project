@@ -1,0 +1,22 @@
+db.createCollection("globaldts",
+{
+   validator: {
+       $jsonSchema: {
+      bsonType: "object",
+        properties: {
+            currentDebtPer: {
+               bsonType: "string"
+            },
+            info: {
+               bsonType: "number"
+            }
+         }
+      }
+   }
+})
+
+
+db.globaldts.insertOne({
+   currentDebtPer: "OCT",
+   info: 261
+})

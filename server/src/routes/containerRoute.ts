@@ -8,6 +8,7 @@ import {
     updateContainerCtrl,
     deleteContainerCtrl,
     getContbyNumberCtrl,
+    getCurrentPerController,
     insertContainersController
 } from "../controllers/containerController";
 
@@ -22,6 +23,7 @@ class Container
 
     routes() {
         this.router.get('/', getContainersCtrl);
+        this.router.get('/current-per', getCurrentPerController);
         this.router.get('/:id', getContainerOneCtrl);
         this.router.get('/number/:idctner', getContbyNumberCtrl);
         this.router.post('/', createContainerCtrl);

@@ -10,4 +10,4 @@ const PagoSchema = new mongoose_1.Schema({
     recibo_n: String,
     client_name: String
 });
-exports.default = mongoose_1.model('pago', PagoSchema);
+exports.default = (0, mongoose_1.model)('pago', PagoSchema);

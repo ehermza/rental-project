@@ -15,7 +15,7 @@ const rentalRoute_1 = __importDefault(require("./routes/rentalRoute"));
 const debtInfoRoute_1 = __importDefault(require("./routes/debtInfoRoute"));
 class Server {
     constructor() {
-        this.app = express_1.default();
+        this.app = (0, express_1.default)();
         this.config();
         this.routes();
     }
@@ -34,8 +34,8 @@ class Server {
         //Middlewares
         this.app.use(express_1.default.json());
         this.app.use(express_1.default.urlencoded({ extended: false }));
-        this.app.use(morgan_1.default("dev"));
-        this.app.use(cors_1.default());
+        this.app.use((0, morgan_1.default)("dev"));
+        this.app.use((0, cors_1.default)());
     }
     routes() {
         this.app.use(index_1.default);

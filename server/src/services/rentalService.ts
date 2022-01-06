@@ -267,7 +267,7 @@ export async function insertPaymentService(idclient:string, body: any):
         /** If client canceled current period debt, then..
          *    put payment on db: 'pagos_register' property
          **/
-            insertPagoRegister(objRent, valueByPeriod, PerOriginal, recibo_n);
+            await insertPagoRegister(objRent, valueByPeriod, PerOriginal, recibo_n);
             await objRent.update({
                 pagos_total: objRent.pagos_total + valueByPeriod,
             });

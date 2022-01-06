@@ -19,7 +19,7 @@ const clientService_1 = require("../services/clientService");
 function getClientsCtrl(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const clients = yield clientService_1.getClientsService();
+            const clients = yield (0, clientService_1.getClientsService)();
             console.log(clients);
             res.json(clients);
         }
@@ -34,7 +34,7 @@ function getClientOneCtrl(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const { id } = req.params;
-            const client = yield clientService_1.getClientOneService(new mongodb_1.ObjectID(id));
+            const client = yield (0, clientService_1.getClientOneService)(new mongodb_1.ObjectID(id));
             res.json(client);
         }
         catch (error) {
@@ -66,7 +66,7 @@ function createClientCtrl(req, res) {
                 business,
                 rent_info: []
             });
-            yield clientService_1.createClientService(client);
+            yield (0, clientService_1.createClientService)(client);
             res.json(client);
         }
         catch (error) {
@@ -80,7 +80,7 @@ function updateClientCtrl(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const { id } = req.params;
-            const objclient = yield clientService_1.updateClientService(new mongodb_1.ObjectID(id), req.body);
+            const objclient = yield (0, clientService_1.updateClientService)(new mongodb_1.ObjectID(id), req.body);
             console.log('(clientController) updateClientCtrl(req,res) = ', req.params);
             res.json(objclient);
         }

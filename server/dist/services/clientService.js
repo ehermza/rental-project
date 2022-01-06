@@ -20,7 +20,7 @@ function getClientsService() {
             return yield Client_1.default.find();
         }
         catch (error) {
-            throw Error(error);
+            throw new Error();
         }
     });
 }
@@ -32,7 +32,7 @@ function getClientOneService(id) {
             return yield Client_1.default.findById(id);
         }
         catch (error) {
-            throw Error(error);
+            throw new Error();
         }
     });
 }
@@ -44,7 +44,7 @@ function createClientService(objclient) {
             return yield objclient.save();
         }
         catch (error) {
-            throw Error(error);
+            throw new Error();
         }
     });
 }
@@ -57,7 +57,7 @@ function updateClientService(id, objclient) {
         }
         catch (error) {
             console.log('(ERROR) findByIdAndUpdate()', objclient);
-            throw Error(error);
+            throw new Error();
         }
     });
 }

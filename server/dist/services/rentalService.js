@@ -274,7 +274,7 @@ function insertPaymentService(idclient, body) {
                 /** If client canceled current period debt, then..
                  *    put payment on db: 'pagos_register' property
                  **/
-                insertPagoRegister(objRent, valueByPeriod, PerOriginal, recibo_n);
+                yield insertPagoRegister(objRent, valueByPeriod, PerOriginal, recibo_n);
                 yield objRent.update({
                     pagos_total: objRent.pagos_total + valueByPeriod,
                 });

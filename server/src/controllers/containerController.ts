@@ -1,5 +1,8 @@
 import { Request, Response } from "express";
+
 import Container, { IContainer } from '../models/Container';
+import GlobalDt, { IGlobalDt } from "../models/GlobalDt";
+
 import { ObjectID } from 'mongodb';
 import {
     getContainersServ,
@@ -7,8 +10,22 @@ import {
     createContainerServ,
     updateContainerServ,
     deleteContainerServ,
+    getCurrentPerService,
     getContByNumberService,
 } from "../services/containerService";
+
+
+export async function getCurrentPerController(req: Request, res: Response) 
+{
+    try {
+        const per = await getCurrentPerService();
+        res.json(per);
+
+    } catch (error) {
+        res.status(589).json({ status: 589, message: 'Failed to try find current debt period from database' });
+        
+    }
+}
 
 export async function getContainersCtrl(req: Request, res: Response) {
     try {

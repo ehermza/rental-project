@@ -23,7 +23,7 @@ function getPaymentByCtnerCtrl(req, res) {
          */
         try {
             const { id } = req.params;
-            const pagos = yield rentalService_1.getPaymentByCtnerServ(id);
+            const pagos = yield (0, rentalService_1.getPaymentByCtnerServ)(id);
             if (!pagos) {
                 res.status(580).json({ message: 'Container is not active or not exist:' });
             }
@@ -39,7 +39,7 @@ function getRentalByCtnerController(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const { idctner } = req.params;
-            const rental = yield rentalService_1.getRentalByCtnerService(idctner);
+            const rental = yield (0, rentalService_1.getRentalByCtnerService)(idctner);
             if (!rental) {
                 res.status(569).json({ status: 569, message: 'Rental object requested is not exists.' });
             }
@@ -57,7 +57,7 @@ function deletePaymentCtrl(req, res) {
             // const { idpayment, idctner } = req.params;
             const { recibo, idctner } = req.params;
             console.log(req.body);
-            const result = yield rentalService_1.deletePaymentByCtnerServ(recibo, idctner);
+            const result = yield (0, rentalService_1.deletePaymentByCtnerServ)(recibo, idctner);
             if (!result) {
                 res.status(536).json({ message: 'Fail to try delete payment.' });
             }
@@ -72,7 +72,7 @@ function getSaldoByCtnerCtrl(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const { id } = req.params;
-            const result = yield rentalService_1.getSaldoByCtnerService(id);
+            const result = yield (0, rentalService_1.getSaldoByCtnerService)(id);
             res.json({ saldo: result });
         }
         catch (error) {
@@ -102,19 +102,19 @@ function createPaymentCtrl(req, res) {
             /** const container is 'id_container' property
              *      from Container class */
             console.log(' (body) ', req.body);
-            const objCtner = yield containerService_1.getContainerOneServ(new mongodb_1.ObjectID(container));
+            const objCtner = yield (0, containerService_1.getContainerOneServ)(new mongodb_1.ObjectID(container));
             if (!objCtner) {
                 res.status(714).json({ message: 'Container object not defined!' });
                 return;
             }
             const idclient = objCtner.rented_by_id;
-            const alquiler = yield rentalService_1.insertPaymentService(idclient, req.body);
+            const alquiler = yield (0, rentalService_1.insertPaymentService)(idclient, req.body);
             if (!alquiler) {
                 res.status(710).json({ message: 'Can\'t create Payment: Rental Object is null or undefined.' });
                 return;
             }
             const id_debt = alquiler.id_debtinfo.toString();
-            yield debtService_1.updateDebtByPaymentService(id_debt, parseFloat(value));
+            yield (0, debtService_1.updateDebtByPaymentService)(id_debt, parseFloat(value));
             res.json(alquiler);
         }
         catch (error) {
@@ -131,13 +131,13 @@ function createAlquilerCtrl(req, res) {
             console.log("=========(REQ.BODY)=========");
             console.log(req.body);
             // const fecha = Date.now();
-            const debtinfo = yield debtService_2.createDebtService(ctner_number, client_name);
+            const debtinfo = yield (0, debtService_2.createDebtService)(ctner_number, client_name);
             if (!debtinfo) {
                 res.status(711);
                 return;
             }
             const ptr_debt = debtinfo._id;
-            const alquiler = yield rentalService_1.createAlquilerService(ptr_client, ptr_ctner, ptr_debt, Date.now());
+            const alquiler = yield (0, rentalService_1.createAlquilerService)(ptr_client, ptr_ctner, ptr_debt, Date.now());
             res.json(alquiler);
         }
         catch (error) {
@@ -151,7 +151,7 @@ function getMonthNumberController(req, res) {
         // this shit works! jojo..
         try {
             const { idctner } = req.params;
-            const ra = yield rentalService_1.getMonthNumberService(idctner);
+            const ra = yield (0, rentalService_1.getMonthNumberService)(idctner);
             res.json(ra);
         }
         catch (error) {
@@ -163,7 +163,7 @@ function insertDebtController(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             // var aCtnersActive: IContainer[] = [];
-            const ctners = yield containerService_1.getContainersServ();
+            const ctners = yield (0, containerService_1.getContainersServ)();
             console.log("========(CONTAINERS TODOS)========");
             console.log(ctners);
             /** Filter Containers 'Activos' and then, insert debt. */
@@ -207,13 +207,13 @@ function insertDebtByCtner(ctnerObj) {
             const idctner = ctnerObj._id.toString();
             const idclient = ctnerObj.rented_by_id;
             const price = ctnerObj.price_tocharge;
-            var alquiler = yield rentalService_1.getRentalObjectServ(idclient, idctner);
+            var alquiler = yield (0, rentalService_1.getRentalObjectServ)(idclient, idctner);
             if (!alquiler) {
                 // res.status(710).json({ message: 'Rental object is null or undefined.' });
                 return 710;
             }
-            yield rentalService_1.insertDebtService(alquiler, price);
-            alquiler = yield rentalService_1.getRentalObjectServ(idclient, idctner);
+            yield (0, rentalService_1.insertDebtService)(alquiler, price);
+            alquiler = yield (0, rentalService_1.getRentalObjectServ)(idclient, idctner);
             if (!alquiler) {
                 // res.status(710).json({ message: 'Rental object is null or undefined.' });
                 return 711;
@@ -223,7 +223,7 @@ function insertDebtByCtner(ctnerObj) {
             /**
              * Update Object Debt to print Debts table.
              */
-            yield debtService_2.updateDebtService(alquiler);
+            yield (0, debtService_2.updateDebtService)(alquiler);
             return 0;
         }
         catch (error) {

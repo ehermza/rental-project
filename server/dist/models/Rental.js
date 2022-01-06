@@ -30,4 +30,4 @@ const rentalSchema = new mongoose_1.Schema({
     },
     last_deuda_per: String
 });
-exports.default = mongoose_1.model('rental', rentalSchema);
+exports.default = (0, mongoose_1.model)('rental', rentalSchema);

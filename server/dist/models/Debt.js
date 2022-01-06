@@ -9,4 +9,4 @@ const DebtSchema = new mongoose_1.Schema({
     overdue_debt: { type: Number, default: 0 },
     paid_current_per: { type: String, default: 'not per.' }
 });
-exports.default = mongoose_1.model('debt', DebtSchema);
+exports.default = (0, mongoose_1.model)('debt', DebtSchema);

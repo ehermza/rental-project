@@ -14,7 +14,7 @@ const debtService_1 = require("../services/debtService");
 function getListDebts(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const list = yield debtService_1.getDebtInfoService();
+            const list = yield (0, debtService_1.getDebtInfoService)();
             res.json(list);
         }
         catch (error) {

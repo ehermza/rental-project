@@ -1,0 +1,55 @@
+# dmidecode 3.2
+Getting SMBIOS data from sysfs.
+SMBIOS 2.7 present.
+
+Handle 0x0012, DMI type 16, 23 bytes
+Physical Memory Array
+	Location: System Board Or Motherboard
+	Use: System Memory
+	Error Correction Type: None
+	Maximum Capacity: 6 GB
+	Error Information Handle: Not Provided
+	Number Of Devices: 2
+
+Handle 0x0014, DMI type 17, 34 bytes
+Memory Device
+	Array Handle: 0x0012
+	Error Information Handle: Not Provided
+	Total Width: 64 bits
+	Data Width: 64 bits
+	Size: 2048 MB
+	Form Factor: DIMM
+	Set: None
+	Locator: A1_DIMM0
+	Bank Locator: A1_BANK0
+	Type: DDR3
+	Type Detail: Synchronous
+	Speed: 1333 MT/s
+	Manufacturer: Samsung         
+	Serial Number: 61F9E7AA  
+	Asset Tag: A1_AssetTagNum0
+	Part Number: M471B5773DH0-CH9  
+	Rank: 1
+	Configured Memory Speed: 667 MT/s
+
+Handle 0x0016, DMI type 17, 34 bytes
+Memory Device
+	Array Handle: 0x0012
+	Error Information Handle: Not Provided
+	Total Width: 64 bits
+	Data Width: 64 bits
+	Size: 4096 MB
+	Form Factor: DIMM
+	Set: None
+	Locator: A1_DIMM1
+	Bank Locator: A1_BANK1
+	Type: DDR3
+	Type Detail: Synchronous
+	Speed: 1333 MT/s
+	Manufacturer: Samsung         
+	Serial Number: 95667309  
+	Asset Tag: A1_AssetTagNum1
+	Part Number: M471B5273DH0-CH9  
+	Rank: 2
+	Configured Memory Speed: 667 MT/s
+

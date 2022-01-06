@@ -12,8 +12,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteContainerServ = exports.updateContainerServ = exports.createContainerServ = exports.getContByNumberService = exports.getPriceContainerService = exports.getContainerOneServ = exports.getContainersServ = void 0;
+exports.deleteContainerServ = exports.updateContainerServ = exports.createContainerServ = exports.getContByNumberService = exports.getPriceContainerService = exports.getContainerOneServ = exports.getContainersServ = exports.getCurrentPerService = void 0;
 const Container_1 = __importDefault(require("../models/Container"));
+const GlobalDt_1 = __importDefault(require("../models/GlobalDt"));
+function getCurrentPerService() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const filter = { "info": 261 };
+            const objGlobalDt = yield GlobalDt_1.default.findOne(filter);
+            // await GlobalDt.findById(
+            //     new ObjectID("61d7251e9825e458c78bc57e")
+            // );
+            return (objGlobalDt != null) ? objGlobalDt.currentDebtPer : "globaldt not found";
+        }
+        catch (error) {
+        }
+    });
+}
+exports.getCurrentPerService = getCurrentPerService;
 function getContainersServ() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -22,7 +38,7 @@ function getContainersServ() {
             return yield Container_1.default.find().sort({ id_container: -1 });
         }
         catch (error) {
-            throw Error(error);
+            throw new Error();
         }
     });
 }
@@ -33,7 +49,7 @@ function getContainerOneServ(id) {
             return yield Container_1.default.findById(id);
         }
         catch (error) {
-            throw Error(error);
+            throw new Error();
         }
     });
 }
@@ -47,7 +63,7 @@ function getPriceContainerService(id) {
             return cont.price_tocharge;
         }
         catch (error) {
-            throw Error(error);
+            throw new Error();
         }
     });
 }
@@ -59,7 +75,7 @@ function getContByNumberService(idctner) {
             return yield Container_1.default.findOne(filter);
         }
         catch (error) {
-            throw Error(error);
+            throw new Error();
         }
     });
 }
@@ -71,7 +87,7 @@ function createContainerServ(objprod) {
             // console.log(objprod);
         }
         catch (error) {
-            throw Error(error);
+            throw new Error();
         }
     });
 }
@@ -82,7 +98,7 @@ function updateContainerServ(id, objprod) {
             return yield Container_1.default.findByIdAndUpdate(id, objprod);
         }
         catch (error) {
-            throw Error(error);
+            throw new Error();
         }
     });
 }
@@ -93,7 +109,7 @@ function deleteContainerServ(id) {
             return yield Container_1.default.findByIdAndDelete(id);
         }
         catch (error) {
-            throw Error(error);
+            throw new Error();
         }
     });
 }
