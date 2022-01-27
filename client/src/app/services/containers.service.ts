@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { GlobalDt } from '../models/GlobalDt';
+import { Observable } from 'rxjs';
 // import { Observable } from 'rxjs';
 
 @Injectable({
@@ -26,5 +28,9 @@ export class ContainersService {
 
   setClient(id:string, body:any) {
     return this.http.put<any>(`/api/containers/${id}`, body);
+  }
+  
+  getGlobaldt(): Observable<GlobalDt> {
+    return this.http.get<GlobalDt>('/api/containers/current-per');
   }
 }
