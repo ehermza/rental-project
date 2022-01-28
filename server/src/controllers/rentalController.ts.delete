@@ -2,15 +2,15 @@ import { Request, Response } from "express";
 import { ObjectID } from "mongodb"
 
 import {
-    getRentalObjectServ,
-    insertPaymentService,
     createAlquilerService,
-    getPaymentByCtnerServ,
-    getSaldoByCtnerService,
-    deletePaymentByCtnerServ,
-    getRentalByCtnerService,
-    getMonthNumberService,
-    insertDebtService
+    // getRentalObjectServ,
+    // insertPaymentService,
+    // getPaymentByCtnerServ,
+    // getSaldoByCtnerService,
+    // deletePaymentByCtnerServ,
+    // getRentalByCtnerService,
+    // getMonthNumberService,
+    // insertDebtService
 } from "../services/rentalService";
 
 import { 
@@ -136,7 +136,7 @@ export async function createAlquilerCtrl(req: Request, res: Response) {
         console.log("=========(REQ.BODY)=========");
         console.log(req.body);
 
-        // const fecha = Date.now();
+/*         
         const debtinfo: IDebt | undefined =
             await createDebtService(ctner_number, client_name);
         if (!debtinfo) {
@@ -144,6 +144,7 @@ export async function createAlquilerCtrl(req: Request, res: Response) {
             return;
         }
         const ptr_debt: string = debtinfo._id;
+ */     
         const alquiler = await createAlquilerService(ptr_client, ptr_ctner, ptr_debt, Date.now());
         res.json(alquiler);
 

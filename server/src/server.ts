@@ -6,9 +6,9 @@ import cors from "cors";
 import routes from "./routes/index";
 import containerRoutes from "./routes/containerRoute";
 import clientRoutes from "./routes/clientRoute";
-// import pagoRoutes from "./routes/pagoRoute";
 import rentalRoutes from "./routes/rentalRoute";
-import debtInfoRoute from "./routes/debtInfoRoute";
+// import pagoRoutes from "./routes/pagoRoute";
+// import debtInfoRoute from "./routes/debtInfoRoute";
 
 class Server {
   public app: express.Application;
