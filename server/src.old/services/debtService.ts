@@ -3,7 +3,7 @@
 import { ObjectID } from 'mongodb';
 import { getRentalByCtnerService } from "../services/rentalService";
 import Debt, { IDebt } from '../models/Debt';
-import Rental, { IRental, RgtPago, RgtDeuda } from '../models/Rental';
+import Rental, { IRental } from '../models/Rental';
 
 let objRental: IRental | undefined = undefined;
 
@@ -12,14 +12,16 @@ export async function createDebtService(nCtner: number, client: string) {
      * This function execute just when create a new rental.
      * Date: Nov-20th.2021
      */
+    const rental: string = "";   // var arg.
+    const period: string = "";   // var arg.
+    const amount: number = 0;    // var arg.
+
     try {
         const debtinfo: IDebt = new Debt({
-            number_ctner: nCtner,
-            name_client: client,
-            current_debt: 0,
-            price_rental: 0,
-            overdue_debt: 0,
-            paid_current_per: ''
+            rental_id: rental,
+            period_id: period,
+            amount: amount,
+            completed: false
         });
         console.log("=============(NEW DEBT)=============");
         console.log(debtinfo);
@@ -31,27 +33,35 @@ export async function createDebtService(nCtner: number, client: string) {
     }
 }
 
-function getValueDebt(): number {
-    var importe: number = -1;
-    if (!objRental)
-        return -1;
+// to correct! Jan,27th-2022
+async function getValueDebt(alquiler: IRental): Promise<Number>
+{
+    const ptrDebtLast: string = alquiler.last_debt_id;
 
-    const per = objRental.last_deuda_per;
-    const arDeudas: RgtDeuda[] = objRental.deuda_register;
-    arDeudas.forEach(deuda => {
-        if (deuda.period == per) {
-            importe = deuda.value;
-        }
-    });
-    return importe;
+    const amount: Number = await Debt.findById(new ObjectID(ptrDebtLast));
+    return amount;
+    /*     var importe: number = -1;
+            if (!objRental)
+                return -1;
+        
+            const per = objRental.last_deuda_per;
+            const arDeudas: RgtDeuda[] = objRental.deuda_register;
+            arDeudas.forEach(deuda => {
+                if (deuda.period == per) {
+                    importe = deuda.value;
+                }
+            });
+            return importe;
+         */
+    return 0;
 }
 
-export async function updateDebtByPaymentService(id_debt:string, importe:number):
+export async function updateDebtByPaymentService(id_debt: string, importe: number):
     Promise<IDebt | null> {
     try {
         const objDebt: IDebt | null = await Debt.findById(id_debt);
         if (!objDebt) {
-            return null; 
+            return null;
         }
         objDebt.current_debt -= importe;
         objDebt.overdue_debt -= importe;
@@ -75,7 +85,7 @@ export async function updateDebtService(alquiler: IRental) {
             +objRental.deuda_total - objRental.pagos_total - objRental.last_payment.a_cta;
         // +objRental.deuda_total - objRental.pagos_total;
 
-        const priceByMonth: number = getValueDebt();
+        const priceByMonth: number = getValueDebt(objRental);
         const difer: number = (currentDebt - priceByMonth);
         const atras: number = (difer > 0) ? difer : 0;
 

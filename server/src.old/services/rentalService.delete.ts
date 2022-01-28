@@ -46,6 +46,7 @@ export async function getRentalByCtnerService(idCtner: string) {
     }
 }
 
+//  Success OK! Jan.27th,2022
 export async function getSaldoByCtnerService(idCtner: string): Promise<number> {
     try {
         const filter: any = {
@@ -73,7 +74,8 @@ export async function getPagosService() {
     }
 
 }
-// export async function deletePaymentByCtnerServ(idPayment: string, idCtner: string)
+
+//  Failed! Jan.27th,2022
 export async function deletePaymentByCtnerServ(recibo: string, idCtner: string) {
     try {
         const filter: any = {
@@ -109,6 +111,8 @@ export async function deletePaymentByCtnerServ(recibo: string, idCtner: string) 
     }
 
 }
+
+//  WORKS OK! Jan.27th,2022
 export async function getPaymentByCtnerServ(idCtner: string) {
     try {
         const filter: any = {
@@ -126,6 +130,8 @@ export async function getPaymentByCtnerServ(idCtner: string) {
 
     }
 }
+
+//  Failed! Jan.27th,2022
 export async function getPagosByClientService(idClient: string, nCtner: Number) {
     try {
         // return await Pago.find();
@@ -143,7 +149,8 @@ export async function getPagosByClientService(idClient: string, nCtner: Number) 
         throw new Error();
     }
 }
-// insertPayment(importe: number, fecha: Date, per: String, recibo?:String): number
+
+//  WORKS OK! Jan.27th,2022
 export async function getRentalObjectServ(idClient: string, idCtner: string) {
     try {
         const filter: any = {
@@ -157,6 +164,8 @@ export async function getRentalObjectServ(idClient: string, idCtner: string) {
         throw new Error();
     }
 }
+
+//  Failed! Jan.27th,2022
 export async function createAlquilerService(idClient: string, idCtner: string, idDebt: string, fecha: number) {
     try {
         // const alquiler:IRental       
@@ -187,6 +196,7 @@ export async function createAlquilerService(idClient: string, idCtner: string, i
     }
 }
 
+//  To Delete! Jan.27th,2022
 function queryNextMonth(period: string): string 
 {
     var res: string = "OCT";
@@ -202,6 +212,7 @@ function queryNextMonth(period: string): string
     return res;
 }
 
+//  Failed! Jan.27th,2022
 function getValueByPeriod(arDeudas: Array<RgtDeuda>, month: string): number {
     /**
      *  Query value that client must to pay on period 'month'
@@ -220,6 +231,8 @@ function getValueByPeriod(arDeudas: Array<RgtDeuda>, month: string): number {
 
 }
 // export async function insertPaymentService(objRent:IRental, pago:RgtPago)
+
+//  Failed! Jan.27th,2022
 async function insertPagoRegister(objRent: IRental, importe:number, mes:string, recibo:string)
  {
     const pago: RgtPago = {
