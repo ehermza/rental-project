@@ -7,6 +7,7 @@ import routes from "./routes/index";
 import containerRoutes from "./routes/containerRoute";
 import clientRoutes from "./routes/clientRoute";
 import rentalRoutes from "./routes/rentalRoute";
+import periodRoutes from "./routes/periodRoute";
 // import pagoRoutes from "./routes/pagoRoute";
 // import debtInfoRoute from "./routes/debtInfoRoute";
 
@@ -40,6 +41,7 @@ class Server {
 
   routes() {
     this.app.use(routes);
+    this.app.use("/api/period", periodRoutes)
     this.app.use("/api/containers", containerRoutes);
     this.app.use("/api/clients", clientRoutes);
     // this.app.use("/api/pagos", pagoRoutes);

@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createAlquilerCtrl = void 0;
 const rentalService_1 = require("../services/rentalService");
+//  Edit! SUCCESS Jan.28th,2022
 function createAlquilerCtrl(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {

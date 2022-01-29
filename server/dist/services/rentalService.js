@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createAlquilerService = void 0;
 const Rental_1 = __importDefault(require("../models/Rental"));
-//  Edit! Jan.27th,2022
+//  Edit! SUCCESS Jan.28th,2022
 function createAlquilerService(idClient, idCtner, idDebt, fecha) {
     return __awaiter(this, void 0, void 0, function* () {
         try {

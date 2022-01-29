@@ -11,6 +11,7 @@ const index_1 = __importDefault(require("./routes/index"));
 const containerRoute_1 = __importDefault(require("./routes/containerRoute"));
 const clientRoute_1 = __importDefault(require("./routes/clientRoute"));
 const rentalRoute_1 = __importDefault(require("./routes/rentalRoute"));
+const periodRoute_1 = __importDefault(require("./routes/periodRoute"));
 // import pagoRoutes from "./routes/pagoRoute";
 // import debtInfoRoute from "./routes/debtInfoRoute";
 class Server {
@@ -39,6 +40,7 @@ class Server {
     }
     routes() {
         this.app.use(index_1.default);
+        this.app.use("/api/period", periodRoute_1.default);
         this.app.use("/api/containers", containerRoute_1.default);
         this.app.use("/api/clients", clientRoute_1.default);
         // this.app.use("/api/pagos", pagoRoutes);

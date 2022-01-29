@@ -1,0 +1,31 @@
+[{
+  "_id": {
+    "$oid": "61f49146ac6c5cf15c191b1a"
+  },
+  "month_name": "OCTUBRE-2021",
+  "year_number": 2021,
+  "month_next_id": "61f49235ac6c5cf15c191b1d",
+  "month_prev_id": ""
+},{
+  "_id": {
+    "$oid": "61f49235ac6c5cf15c191b1d"
+  },
+  "month_name": "NOVEMBER-2021",
+  "month_next_id": "61f49a0cac6c5cf15c191b1f",
+  "month_prev_id": "61f49146ac6c5cf15c191b1a"
+},{
+  "_id": {
+    "$oid": "61f49a0cac6c5cf15c191b1f"
+  },
+  "month_name": "DICIEMBRE-2021",
+  "month_next_id": "",
+  "month_prev_id": "61f49146ac6c5cf15c191b1a"
+},{
+  "_id": {
+    "$oid": "61f49ac1ac6c5cf15c191b20"
+  },
+  "month_name": "ENERO-2022",
+  "year_number": 2022,
+  "month_next_id": "",
+  "month_prev_id": "61f49a0cac6c5cf15c191b1f"
+}]
