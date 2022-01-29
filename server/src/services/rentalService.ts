@@ -3,7 +3,7 @@ import Rental, { IRental } from '../models/Rental';
 import { ObjectID } from "mongodb";
 
 
-//  Edit! Jan.27th,2022
+//  Edit! SUCCESS Jan.28th,2022
 export async function createAlquilerService(idClient: string, idCtner: string, idDebt: string, fecha: number) {
     try {
         // const alquiler:IRental       

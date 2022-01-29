@@ -1,12 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
-const DebtSchema = new mongoose_1.Schema({
-    number_ctner: { type: Number, required: true },
-    name_client: String,
-    current_debt: { type: Number, required: true },
-    price_rental: { type: Number, required: true },
-    overdue_debt: { type: Number, default: 0 },
-    paid_current_per: { type: String, default: 'not per.' }
+const debtSchema = new mongoose_1.Schema({
+    rental_id: String,
+    period_id: String,
+    amount: Number,
+    completed: Boolean,
 });
-exports.default = (0, mongoose_1.model)('debt', DebtSchema);
+exports.default = (0, mongoose_1.model)('debt', debtSchema);
+'*********************************************************************';

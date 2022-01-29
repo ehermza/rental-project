@@ -44,7 +44,7 @@ class Server {
     this.app.use("/api/clients", clientRoutes);
     // this.app.use("/api/pagos", pagoRoutes);
     this.app.use("/api/rental", rentalRoutes);
-    this.app.use("/api/informe/", debtInfoRoute);
+    // this.app.use("/api/informe/", debtInfoRoute);
   }
 
   start() {

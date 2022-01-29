@@ -1,33 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
+/**
+ * Class created by EHER Jan.26th, 2022
+ *  Rental containers- Project js.
+ */
 const rentalSchema = new mongoose_1.Schema({
     id_client: { type: String, required: true },
     id_container: { type: String, required: true },
-    id_debtinfo: String,
     active: Boolean,
     date_init: {
-        type: Date,
-        default: Date.now,
-        required: true
+        type: Date, default: Date.now, required: true
     },
     date_final: Date,
     deuda_total: Number,
-    deuda_register: [{
-            value: Number,
-            period: String
-        }],
     pagos_total: Number,
-    pagos_register: [{
-            value: Number,
-            period: String,
-            paid_at: Date,
-            recibo_n: String
-        }],
-    last_payment: {
-        period: String,
-        a_cta: Number
-    },
-    last_deuda_per: String
+    last_payment_id: String,
+    last_debt_id: String,
 });
 exports.default = (0, mongoose_1.model)('rental', rentalSchema);
+'*********************************************************************';

@@ -1,21 +1,11 @@
 import Container, { IContainer } from "../models/Container"
-import GlobalDt, { IGlobalDt } from "../models/GlobalDt";
+// import GlobalDt, { IGlobalDt } from "../models/GlobalDt";
 import { ObjectID } from 'mongodb'
 
 
 export async function getCurrentPerService() {
     try {
-        const filter = { "info": 261 };
-
-        const objGlobalDt:IGlobalDt|null = await GlobalDt.findOne(filter);
-            
-        // await GlobalDt.findById(
-        //     new ObjectID("61d7251e9825e458c78bc57e")
-        // );
-        return (objGlobalDt!= null)? objGlobalDt.currentDebtPer: "globaldt not found";
-
-    } catch (error) {
-        
+    } catch (error) {        
     }
 }
 export async function getContainersServ(): Promise<IContainer[]> {

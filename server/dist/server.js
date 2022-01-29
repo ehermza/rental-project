@@ -10,9 +10,9 @@ const cors_1 = __importDefault(require("cors"));
 const index_1 = __importDefault(require("./routes/index"));
 const containerRoute_1 = __importDefault(require("./routes/containerRoute"));
 const clientRoute_1 = __importDefault(require("./routes/clientRoute"));
-// import pagoRoutes from "./routes/pagoRoute";
 const rentalRoute_1 = __importDefault(require("./routes/rentalRoute"));
-const debtInfoRoute_1 = __importDefault(require("./routes/debtInfoRoute"));
+// import pagoRoutes from "./routes/pagoRoute";
+// import debtInfoRoute from "./routes/debtInfoRoute";
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -43,7 +43,7 @@ class Server {
         this.app.use("/api/clients", clientRoute_1.default);
         // this.app.use("/api/pagos", pagoRoutes);
         this.app.use("/api/rental", rentalRoute_1.default);
-        this.app.use("/api/informe/", debtInfoRoute_1.default);
+        // this.app.use("/api/informe/", debtInfoRoute);
     }
     start() {
         this.app.listen(this.app.get("port"), () => {

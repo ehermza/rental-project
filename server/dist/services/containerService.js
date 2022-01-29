@@ -14,16 +14,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteContainerServ = exports.updateContainerServ = exports.createContainerServ = exports.getContByNumberService = exports.getPriceContainerService = exports.getContainerOneServ = exports.getContainersServ = exports.getCurrentPerService = void 0;
 const Container_1 = __importDefault(require("../models/Container"));
-const GlobalDt_1 = __importDefault(require("../models/GlobalDt"));
 function getCurrentPerService() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const filter = { "info": 261 };
-            const objGlobalDt = yield GlobalDt_1.default.findOne(filter);
-            // await GlobalDt.findById(
-            //     new ObjectID("61d7251e9825e458c78bc57e")
-            // );
-            return (objGlobalDt != null) ? objGlobalDt.currentDebtPer : "globaldt not found";
         }
         catch (error) {
         }

@@ -19,6 +19,7 @@ import {
 } from "../services/containerService";
 
 
+//  Edit! SUCCESS Jan.28th,2022
 export async function createAlquilerCtrl(req: Request, res: Response) {
     try {
         // const {idclient, idctner, fecha} = req.body;
