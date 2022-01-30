@@ -18,6 +18,9 @@ const mongodb_1 = require("mongodb");
 const clientService_1 = require("../services/clientService");
 function getClientsCtrl(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
+        /**
+         * It Works! Jan.30th,2022 OK
+         */
         try {
             const clients = yield (0, clientService_1.getClientsService)();
             console.log(clients);
@@ -32,6 +35,9 @@ exports.getClientsCtrl = getClientsCtrl;
 ;
 function getClientOneCtrl(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
+        /**
+         * It Works! Jan.30th,2022 OK
+         */
         try {
             const { id } = req.params;
             const client = yield (0, clientService_1.getClientOneService)(new mongodb_1.ObjectID(id));

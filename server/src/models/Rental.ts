@@ -12,9 +12,10 @@ export interface IRental extends Document
     pagos_total: Number;
     last_payment_id: string;
     last_debt_id: string;
+    price_tocharge: Number;
 }
 /**
- * Class created by EHER Jan.26th, 2022
+ * Class created by EHER Jan.26th,2022
  *  Rental containers- Project js. 
  */
 
@@ -32,6 +33,7 @@ const rentalSchema = new Schema(
         pagos_total: Number,
         last_payment_id: String,
         last_debt_id: String,
+        price_tocharge: Number
     }
 );
 export default model<IRental>('rental', rentalSchema);

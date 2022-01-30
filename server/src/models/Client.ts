@@ -7,9 +7,7 @@ export interface IClient extends Document {
     DNI: string;
     business: string;
     active: boolean;
-    deuda_total: Number;
-    pagos_total: Number;
-    rent_info: Array<any>;
+    info_ad: string;
 
 };
 
@@ -20,15 +18,7 @@ const ClientSchema = new Schema(
         DNI: String,
         business: String,
         active: { type: Boolean, default: true },
-        deuda_total: { type: Number, default: 0 },
-        pagos_total: { type: Number, default: 0 },
-        rent_info: [
-            {
-                inicio: { type: Date, default: Date.now() },
-                finish: Date,
-                id_container: Number,
-            }
-        ]    
+        info_ad: String,
     }
 );
 

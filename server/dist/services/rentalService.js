@@ -12,16 +12,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createAlquilerService = void 0;
+exports.getListAlquilerService = exports.createAlquilerService = void 0;
 const Rental_1 = __importDefault(require("../models/Rental"));
 //  Edit! SUCCESS Jan.28th,2022
-function createAlquilerService(idClient, idCtner, idDebt, fecha) {
+function createAlquilerService(id_client, id_container, idDebt, fecha) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             // const alquiler:IRental       
             const alquiler = new Rental_1.default({
-                id_client: idClient,
-                id_container: idCtner,
+                id_client,
+                id_container,
                 // id_debtinfo: idDebt,
                 active: true,
                 date_init: fecha,
@@ -43,3 +43,22 @@ function createAlquilerService(idClient, idCtner, idDebt, fecha) {
     });
 }
 exports.createAlquilerService = createAlquilerService;
+function getListAlquilerService() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const filter = {
+                active: true
+            };
+            const listAlquiler = yield Rental_1.default.find(filter);
+            const IDLIST = [];
+            listAlquiler.forEach(listAlquiler => {
+                IDLIST.push(listAlquiler._id);
+            });
+            console.log("===========(ACTIVE RENTALS)============");
+            console.log(IDLIST);
+        }
+        catch (error) {
+        }
+    });
+}
+exports.getListAlquilerService = getListAlquilerService;

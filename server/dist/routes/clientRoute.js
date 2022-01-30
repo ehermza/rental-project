@@ -9,8 +9,8 @@ class Client {
     }
     ;
     routes() {
-        this.router.get('/', clientController_1.getClientsCtrl);
-        this.router.get('/:id', clientController_1.getClientOneCtrl);
+        this.router.get('/', clientController_1.getClientsCtrl); // it Works! Jan.30th,2022
+        this.router.get('/:id', clientController_1.getClientOneCtrl); // it Works! Jan.30th,2022
         this.router.post('/', clientController_1.createClientCtrl);
         this.router.put('/:id', clientController_1.updateClientCtrl);
         // this.router.post('/update/:id', updateClientCtrl);

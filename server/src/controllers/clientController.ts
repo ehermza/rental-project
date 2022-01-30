@@ -10,6 +10,9 @@ import {
 } from "../services/clientService";
 
 export async function getClientsCtrl(req: Request, res: Response) {
+    /**
+     * It Works! Jan.30th,2022 OK
+     */
     try {
         const clients = await getClientsService();
         console.log(clients);
@@ -21,7 +24,10 @@ export async function getClientsCtrl(req: Request, res: Response) {
 };
 
 export async function getClientOneCtrl(req: Request, res: Response) {
-    try {
+    /**
+     * It Works! Jan.30th,2022 OK
+     */
+     try {
         const { id } = req.params;
         const client = await getClientOneService(new ObjectID(id));
         res.json(client);

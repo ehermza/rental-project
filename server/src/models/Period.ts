@@ -1,5 +1,9 @@
 
 import { Document, Schema, model } from "mongoose";
+    /**
+     * Author: EHERMZA
+     * Clase para detallar mes de alquiler/pago/cobro de forma dinámica. 
+     * Date: Jan.27th,2022.-    */
 
 export interface IPeriod extends Document {
     month_name: string;

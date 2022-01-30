@@ -8,7 +8,8 @@ class Rental {
         this.routes();
     }
     routes() {
-        this.router.post('/', rentalController_1.createAlquilerCtrl);
+        this.router.post('/', rentalController_1.createAlquilerCtrl); // It Works! Jan.28th,2022.- OK
+        this.router.get('/', rentalController_1.getListAlquilerController);
         /*
                 this.router.get('/container/:idctner', getRentalByCtnerController);
                 this.router.post('/pagos/', createPaymentCtrl);      // insert new payment to database

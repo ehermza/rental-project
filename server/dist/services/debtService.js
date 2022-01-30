@@ -10,11 +10,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.insertDebtService = void 0;
-function insertDebtService(alquiler, amount) {
+function insertDebtService(alquiler, period, importe) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            alquiler.last_debt_id =
-                yield alquiler.updateOne({});
         }
         catch (error) {
         }

@@ -8,30 +8,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.setDebtByPaymentController = exports.getListDebts = void 0;
-const debtService_1 = require("../services/debtService");
-function getListDebts(req, res) {
+exports.createDebtController = void 0;
+const Debt_1 = __importDefault(require("../models/Debt"));
+function createDebtController(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const list = yield (0, debtService_1.getDebtInfoService)();
-            res.json(list);
-        }
-        catch (error) {
-            res.status(914).json({
-                status: 914,
-                message: "Error to try get list debts"
-            });
-        }
-    });
-}
-exports.getListDebts = getListDebts;
-function setDebtByPaymentController(req, res) {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
+            const debito = new Debt_1.default({});
         }
         catch (error) {
         }
     });
 }
-exports.setDebtByPaymentController = setDebtByPaymentController;
+exports.createDebtController = createDebtController;

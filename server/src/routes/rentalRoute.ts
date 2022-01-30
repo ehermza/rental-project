@@ -3,6 +3,7 @@ import { Router } from "express";
 
 import {
     createAlquilerCtrl,
+    getListAlquilerController,
     // createPaymentCtrl,
     // getPaymentByCtnerCtrl,
     // getSaldoByCtnerCtrl, 
@@ -22,7 +23,8 @@ class Rental {
 
     }
     routes() {
-        this.router.post('/', createAlquilerCtrl);
+        this.router.post('/', createAlquilerCtrl);  // It Works! Jan.28th,2022.- OK
+        this.router.get('/', getListAlquilerController);
 /* 
         this.router.get('/container/:idctner', getRentalByCtnerController);
         this.router.post('/pagos/', createPaymentCtrl);      // insert new payment to database

@@ -4,13 +4,13 @@ import { ObjectID } from "mongodb";
 
 
 //  Edit! SUCCESS Jan.28th,2022
-export async function createAlquilerService(idClient: string, idCtner: string, idDebt: string, fecha: number) {
+export async function createAlquilerService(id_client: string, id_container: string, idDebt: string, fecha: number) {
     try {
         // const alquiler:IRental       
         const alquiler: IRental = new Rental(
             {
-                id_client: idClient,
-                id_container: idCtner,
+                id_client,
+                id_container,
                 // id_debtinfo: idDebt,
                 active: true,
                 date_init: fecha,
@@ -33,3 +33,22 @@ export async function createAlquilerService(idClient: string, idCtner: string, i
     }
 }
 
+export async function getListAlquilerService() {
+    try {
+        const filter = {
+            active: true
+        }
+        const listAlquiler:Array<IRental> = await Rental.find(filter);
+        const IDLIST: Array<string> = [];
+        listAlquiler.forEach(listAlquiler => {
+            IDLIST.push(listAlquiler._id);
+        });
+        console.log("===========(ACTIVE RENTALS)============")
+        console.log(IDLIST);
+
+        
+    } catch (error) {
+        
+    }
+    
+}

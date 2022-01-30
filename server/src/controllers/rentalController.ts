@@ -3,6 +3,7 @@ import { ObjectID } from "mongodb"
 
 import {
     createAlquilerService,
+    getListAlquilerService,
     // getRentalObjectServ,
     // insertPaymentService,
     // getPaymentByCtnerServ,
@@ -41,5 +42,14 @@ export async function createAlquilerCtrl(req: Request, res: Response) {
 
     } catch (error) {
         res.status(730).json({ status: 730, message: 'Error to try create Alquiler object!' });
+    }
+}
+
+export async function getListAlquilerController(req:Request, res:Response) {
+    try {
+        getListAlquilerService();
+
+    } catch (error) {
+        
     }
 }
