@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getListAlquilerService = exports.createAlquilerService = void 0;
+exports.getlistAlquilerService = exports.createAlquilerService = void 0;
 const Rental_1 = __importDefault(require("../models/Rental"));
 //  Edit! SUCCESS Jan.28th,2022
 function createAlquilerService(id_client, id_container, idDebt, fecha) {
@@ -43,25 +43,28 @@ function createAlquilerService(id_client, id_container, idDebt, fecha) {
     });
 }
 exports.createAlquilerService = createAlquilerService;
-function getListAlquilerService() {
+function getlistAlquilerService() {
     return __awaiter(this, void 0, void 0, function* () {
         /**
-         * Date: Jan.30th,2022
+         * Date: Jan.30th,2022 | It's Working OK!
          **/
         try {
             const filter = {
                 active: true
             };
-            const listAlquiler = yield Rental_1.default.find(filter);
-            const IDLIST = [];
-            listAlquiler.forEach(listAlquiler => {
-                IDLIST.push(listAlquiler._id);
-            });
-            return IDLIST;
+            const listRental = yield Rental_1.default.find(filter);
+            /*
+                    const IDLIST: string[] = [];
+                    listRental.forEach(
+                        listRental => {
+                            IDLIST.push(listRental._id);
+                        });
+             */
+            return listRental;
         }
         catch (error) {
             return null;
         }
     });
 }
-exports.getListAlquilerService = getListAlquilerService;
+exports.getlistAlquilerService = getlistAlquilerService;

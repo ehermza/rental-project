@@ -10,11 +10,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.insertDebtService = void 0;
-function insertDebtService(alquiler, period, importe) {
+function insertDebtService(debito) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            return yield debito.save();
         }
         catch (error) {
+            throw new Error();
         }
     });
 }

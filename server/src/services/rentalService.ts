@@ -1,6 +1,7 @@
 
 import Rental, { IRental } from '../models/Rental';
 import { ObjectID } from "mongodb";
+import Debt, { IDebt } from '../models/Debt';
 
 
 //  Edit! SUCCESS Jan.28th,2022
@@ -33,21 +34,25 @@ export async function createAlquilerService(id_client: string, id_container: str
     }
 }
 
-export async function getlistRentalService(): Promise<string[] |null> {
+export async function getlistAlquilerService(): Promise <IRental[]| null> 
+// : Promise<string[] |null> 
+{
     /** 
-     * Date: Jan.30th,2022
+     * Date: Jan.30th,2022 | It's Working OK! 
      **/
     try {
         const filter = {
             active: true
         }
-        const listRental: Array<IRental> = await Rental.find(filter);
+        const listRental: IRental[] = await Rental.find(filter);
+/*         
         const IDLIST: string[] = [];
         listRental.forEach(
             listRental => {
                 IDLIST.push(listRental._id);
             });
-        return IDLIST;
+ */        
+        return listRental;
 
     }
     catch (error) {

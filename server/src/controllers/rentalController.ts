@@ -3,7 +3,7 @@ import { ObjectID } from "mongodb"
 
 import {
     createAlquilerService,
-    getListAlquilerService,
+    getlistAlquilerService,
     // getRentalObjectServ,
     // insertPaymentService,
     // getPaymentByCtnerServ,
@@ -48,11 +48,6 @@ export async function createAlquilerCtrl(req: Request, res: Response) {
 export async function getListAlquilerController(req:Request, res:Response) 
 {
     try {
-        const listRental: string[]| null = await getListAlquilerService();
-        
-        res.json(listRental);
-        
-
     } catch (error) {
         
     }
