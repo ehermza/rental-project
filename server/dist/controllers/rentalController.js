@@ -40,7 +40,8 @@ exports.createAlquilerCtrl = createAlquilerCtrl;
 function getListAlquilerController(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            (0, rentalService_1.getListAlquilerService)();
+            const listAlquiler = yield (0, rentalService_1.getListAlquilerService)();
+            res.json(listAlquiler);
         }
         catch (error) {
         }

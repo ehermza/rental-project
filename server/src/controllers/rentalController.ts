@@ -45,9 +45,13 @@ export async function createAlquilerCtrl(req: Request, res: Response) {
     }
 }
 
-export async function getListAlquilerController(req:Request, res:Response) {
+export async function getListAlquilerController(req:Request, res:Response) 
+{
     try {
-        getListAlquilerService();
+        const listRental: string[]| null = await getListAlquilerService();
+        
+        res.json(listRental);
+        
 
     } catch (error) {
         

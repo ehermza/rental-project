@@ -45,6 +45,9 @@ function createAlquilerService(id_client, id_container, idDebt, fecha) {
 exports.createAlquilerService = createAlquilerService;
 function getListAlquilerService() {
     return __awaiter(this, void 0, void 0, function* () {
+        /**
+         * Date: Jan.30th,2022
+         **/
         try {
             const filter = {
                 active: true
@@ -54,10 +57,10 @@ function getListAlquilerService() {
             listAlquiler.forEach(listAlquiler => {
                 IDLIST.push(listAlquiler._id);
             });
-            console.log("===========(ACTIVE RENTALS)============");
-            console.log(IDLIST);
+            return IDLIST;
         }
         catch (error) {
+            return null;
         }
     });
 }

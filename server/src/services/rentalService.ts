@@ -33,22 +33,25 @@ export async function createAlquilerService(id_client: string, id_container: str
     }
 }
 
-export async function getListAlquilerService() {
+export async function getlistRentalService(): Promise<string[] |null> {
+    /** 
+     * Date: Jan.30th,2022
+     **/
     try {
         const filter = {
             active: true
         }
-        const listAlquiler:Array<IRental> = await Rental.find(filter);
-        const IDLIST: Array<string> = [];
-        listAlquiler.forEach(listAlquiler => {
-            IDLIST.push(listAlquiler._id);
-        });
-        console.log("===========(ACTIVE RENTALS)============")
-        console.log(IDLIST);
+        const listRental: Array<IRental> = await Rental.find(filter);
+        const IDLIST: string[] = [];
+        listRental.forEach(
+            listRental => {
+                IDLIST.push(listRental._id);
+            });
+        return IDLIST;
 
-        
-    } catch (error) {
-        
     }
-    
+    catch (error) {
+        return null;
+    }
+
 }
