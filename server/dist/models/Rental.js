@@ -15,8 +15,8 @@ const rentalSchema = new mongoose_1.Schema({
     date_final: Date,
     deuda_total: Number,
     pagos_total: Number,
-    last_payment_id: String,
-    last_debt_id: String,
+    last_payment_per: String,
+    last_debt_per: String,
     price_tocharge: Number
 });
 exports.default = (0, mongoose_1.model)('rental', rentalSchema);

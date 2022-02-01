@@ -10,8 +10,8 @@ export interface IRental extends Document
     date_final: Date;
     deuda_total: Number;
     pagos_total: Number;
-    last_payment_id: string;
-    last_debt_id: string;
+    last_payment_per: string;
+    last_debt_per: string;
     price_tocharge: Number;
 }
 /**
@@ -31,8 +31,8 @@ const rentalSchema = new Schema(
         date_final: Date,
         deuda_total: Number,
         pagos_total: Number,
-        last_payment_id: String,
-        last_debt_id: String,
+        last_payment_per: String,
+        last_debt_per: String,
         price_tocharge: Number
     }
 );

@@ -12,8 +12,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getlistAlquilerService = exports.createAlquilerService = void 0;
+exports.findAndUpdateService = exports.getlistAlquilerService = exports.createAlquilerService = void 0;
 const Rental_1 = __importDefault(require("../models/Rental"));
+const mongodb_1 = require("mongodb");
 //  Edit! SUCCESS Jan.28th,2022
 function createAlquilerService(id_client, id_container, idDebt, fecha) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -68,3 +69,28 @@ function getlistAlquilerService() {
     });
 }
 exports.getlistAlquilerService = getlistAlquilerService;
+function findAndUpdateService(idRental, ptrDebt) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const filter = {
+                _id: new mongodb_1.ObjectID(idRental)
+            };
+            const update = { 'last_debt_per': ptrDebt };
+            return yield Rental_1.default.findOneAndUpdate(filter, update, {
+                new: true
+            });
+        }
+        catch (error) {
+            throw new Error();
+        }
+    });
+}
+exports.findAndUpdateService = findAndUpdateService;
+function getNextPeriodService(params) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+        }
+        catch (error) {
+        }
+    });
+}
