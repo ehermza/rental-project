@@ -17,7 +17,8 @@ import Rental, { IRental } from "../models/Rental";
 
 export async function insertDebtsController(req: Request, res: Response) {
     /** Date: Jan.30th.2022  SUCCESS. WORKING OK!
-     *  Try to insert Debt to database from next period.-
+     *  Try to insert next Debt to database of total Rentals.-
+     *      And update the Rental property: (last_debt_per)
      */
     try {
         const alquileres: IRental[] | null = await getlistAlquilerService();
@@ -32,8 +33,9 @@ export async function insertDebtsController(req: Request, res: Response) {
             if(! dbto ) {
                 continue;
             }
-            const update: string = dbto.period_id.toString();
-          const findandupdate =   await findAndUpdateService(_id, update);
+             const update_per: string = dbto.period_id;
+            // const findandupdate = await findAndUpdateService(_id, dbto);
+            const findandupdate = await findAndUpdateService(alquiler, update_per);
         //   console.log(findandupdate);
         };
         res.json({ message: "Total Debts registered: " + alquileres.length });
@@ -44,19 +46,7 @@ export async function insertDebtsController(req: Request, res: Response) {
         })
     }
 }
-/* 
-async function UpdateLastDebt(idRental:String, ptrDebt:String)
- {
-    try {
-        const filter = { '_id': idRental }
-        const update = { 'last_debt_id': ptrDebt }
-        await Rental.findByIdAndUpdate(idRental, update);
-    } 
-    catch (error) {
-        
-    }
-}
- */
+
 async function CreateDebtObject(alquiler: IRental): Promise<IDebt>
  {
     const { _id, price_tocharge, last_debt_per } = alquiler;
@@ -64,10 +54,9 @@ async function CreateDebtObject(alquiler: IRental): Promise<IDebt>
     let amount = (!price_tocharge) ? -1 : price_tocharge;
 
      let ptrPeriod: string = "61f49146ac6c5cf15c191b1a";
+            // const <October-2021> Period.
     if (last_debt_per) {
         ptrPeriod = await getNextPeriodService(last_debt_per);
-        console.log("=============(GETNEXTPERIOD)=============");
-        console.log(ptrPeriod);
     }
     /**
      * Creating the new Debt Collection on database;

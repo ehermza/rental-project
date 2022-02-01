@@ -3,9 +3,9 @@ import { Document, Schema, model } from "mongoose";
 
 export interface IDebt extends Document
  {
-    rental_id: String;
-    period_id: String;    
-    value: Number;
+    rental_id: string;
+    period_id: string;    
+    amount: Number;
     completed: Boolean;    
 }
 

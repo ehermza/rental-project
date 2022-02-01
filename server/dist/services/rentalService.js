@@ -69,13 +69,24 @@ function getlistAlquilerService() {
     });
 }
 exports.getlistAlquilerService = getlistAlquilerService;
-function findAndUpdateService(idRental, ptrDebt) {
+// export async function findAndUpdateService(idRental: string, dbto: IDebt)
+function findAndUpdateService(alquiler, update_per) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            /**
+             * Created Date: Jan 01th,2022
+             */
+            const { _id, price_tocharge, deuda_total } = alquiler;
             const filter = {
-                _id: new mongodb_1.ObjectID(idRental)
+                _id: new mongodb_1.ObjectID(_id)
             };
-            const update = { 'last_debt_per': ptrDebt };
+            if (!price_tocharge)
+                return null;
+            const totaldebt = deuda_total.valueOf() + price_tocharge.valueOf();
+            const update = {
+                'last_debt_per': update_per,
+                'deuda_total': totaldebt
+            };
             return yield Rental_1.default.findOneAndUpdate(filter, update, {
                 new: true
             });

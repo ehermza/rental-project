@@ -19,7 +19,8 @@ const debtService_1 = require("../services/debtService");
 function insertDebtsController(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         /** Date: Jan.30th.2022  SUCCESS. WORKING OK!
-         *  Try to insert Debt to database from next period.-
+         *  Try to insert next Debt to database of total Rentals.-
+         *      And update the Rental property: (last_debt_per)
          */
         try {
             const alquileres = yield (0, rentalService_1.getlistAlquilerService)();
@@ -33,11 +34,10 @@ function insertDebtsController(req, res) {
                 if (!dbto) {
                     continue;
                 }
-                const update = dbto.period_id.toString();
-                const findandupdate = yield (0, rentalService_1.findAndUpdateService)(_id, update);
-                console.log(update);
-                console.log("=========(UPDATE)==========");
-                console.log(findandupdate);
+                const update_per = dbto.period_id;
+                // const findandupdate = await findAndUpdateService(_id, dbto);
+                const findandupdate = yield (0, rentalService_1.findAndUpdateService)(alquiler, update_per);
+                //   console.log(findandupdate);
             }
             ;
             res.json({ message: "Total Debts registered: " + alquileres.length });
@@ -50,28 +50,14 @@ function insertDebtsController(req, res) {
     });
 }
 exports.insertDebtsController = insertDebtsController;
-/*
-async function UpdateLastDebt(idRental:String, ptrDebt:String)
- {
-    try {
-        const filter = { '_id': idRental }
-        const update = { 'last_debt_id': ptrDebt }
-        await Rental.findByIdAndUpdate(idRental, update);
-    }
-    catch (error) {
-        
-    }
-}
- */
 function CreateDebtObject(alquiler) {
     return __awaiter(this, void 0, void 0, function* () {
         const { _id, price_tocharge, last_debt_per } = alquiler;
         let amount = (!price_tocharge) ? -1 : price_tocharge;
         let ptrPeriod = "61f49146ac6c5cf15c191b1a";
+        // const <October-2021> Period.
         if (last_debt_per) {
             ptrPeriod = yield (0, debtService_1.getNextPeriodService)(last_debt_per);
-            console.log("=============(GETNEXTPERIOD)=============");
-            console.log(ptrPeriod);
         }
         /**
          * Creating the new Debt Collection on database;

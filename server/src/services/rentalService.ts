@@ -34,7 +34,7 @@ export async function createAlquilerService(id_client: string, id_container: str
     }
 }
 
-export async function getlistAlquilerService(): Promise <IRental[]| null> // : Promise<string[] |null> 
+export async function getlistAlquilerService(): Promise<IRental[] | null> // : Promise<string[] |null> 
 {
     /** 
      * Date: Jan.30th,2022 | It's Working OK! 
@@ -44,13 +44,13 @@ export async function getlistAlquilerService(): Promise <IRental[]| null> // : P
             active: true
         }
         const listRental: IRental[] = await Rental.find(filter);
-/*         
-        const IDLIST: string[] = [];
-        listRental.forEach(
-            listRental => {
-                IDLIST.push(listRental._id);
-            });
- */        
+        /*         
+                const IDLIST: string[] = [];
+                listRental.forEach(
+                    listRental => {
+                        IDLIST.push(listRental._id);
+                    });
+         */
         return listRental;
 
     }
@@ -61,28 +61,39 @@ export async function getlistAlquilerService(): Promise <IRental[]| null> // : P
 }
 
 
-export async function findAndUpdateService(idRental:string, ptrDebt:string)
-    : Promise<IRental| null>
- {
+// export async function findAndUpdateService(idRental: string, dbto: IDebt)
+export async function findAndUpdateService(alquiler:IRental , update_per: string)
+    : Promise<IRental | null> {
     try {
+        /**
+         * Created Date: Jan 01th,2022
+         */
+        const {_id, price_tocharge, deuda_total} = alquiler;
         const filter = {
-             _id: new ObjectID(idRental)
-         }
-        const update = { 'last_debt_per': ptrDebt };
-        
+            _id: new ObjectID(_id)
+        }
+        if(!price_tocharge)
+            return null;
+
+        const totaldebt: Number = deuda_total.valueOf() + price_tocharge.valueOf();
+        const update = {
+            'last_debt_per': update_per,
+            'deuda_total': totaldebt
+         };
+
         return await Rental.findOneAndUpdate(filter, update, {
             new: true
         });
-    } 
+    }
     catch (error) {
         throw new Error();
     }
 }
 
-async function getNextPeriodService(params:string) {
+async function getNextPeriodService(params: string) {
     try {
-        
+
     } catch (error) {
-        
+
     }
 }
