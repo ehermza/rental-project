@@ -1,7 +1,9 @@
 
 import {Router} from "express";
 
-import {} from "../controllers/paymentController";
+import {
+    insertPaymentByCtnerController
+} from "../controllers/paymentController";
 
 class Payment 
 {
@@ -14,6 +16,7 @@ class Payment
    
     routes() {
         // this.router.get('/container/:idctner', )
+        this.router.post('/', insertPaymentByCtnerController)
     }
 }
 const pago: Payment = new Payment();

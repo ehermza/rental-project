@@ -9,6 +9,7 @@ import clientRoutes from "./routes/clientRoute";
 import rentalRoutes from "./routes/rentalRoute";
 import periodRoutes from "./routes/periodRoute";
 import debtRoutes from "./routes/debtRoute";
+import paymentRoute from "./routes/paymentRoute";
 // import pagoRoutes from "./routes/pagoRoute";
 // import debtInfoRoute from "./routes/debtInfoRoute";
 
@@ -48,6 +49,7 @@ class Server {
     // this.app.use("/api/pagos", pagoRoutes);
     this.app.use("/api/rental", rentalRoutes);
     this.app.use("/api/debt", debtRoutes);
+    this.app.use("/api/payment", paymentRoute)
     // this.app.use("/api/informe/", debtInfoRoute);
   }
 

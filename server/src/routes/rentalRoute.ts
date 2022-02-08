@@ -24,10 +24,10 @@ class Rental {
 
     }
     routes() {
-        this.router.post('/', createAlquilerCtrl);  // It Works! Jan.2022.- OK
+        this.router.post('/', createAlquilerCtrl);          // It Works! Jan.2022.- OK
         this.router.get('/', getListAlquilerController);
-        this.router.get('/number_ctner/:n_ctner', getRentalByCtnerController); //OK! Works.
-        this.router.get('/container/:id', getRentalByIdController); //OK! Works.
+        this.router.get('/number_ctner/:n_ctner', getRentalByCtnerController);  //OK! Works.
+        this.router.get('/container/:id', getRentalByIdController);             //OK! Works.
 
 /* 
         this.router.post('/pagos/', createPaymentCtrl);      // insert new payment to database
