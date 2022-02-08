@@ -4,24 +4,52 @@ import Rental, { IRental } from '../models/Rental';
 import Container, { IContainer } from "../models/Container";
 import Debt, { IDebt } from '../models/Debt';
 
+
 /**
  * Date: Feb.07th,2022.-
  *  WORKS OK! SUCCESS.
  * @param CtnerNumber 
  * @returns 
  */
-export async function getRentalByCtnerService(CtnerNumber: number) :
-    Promise <IRental| null>
-{
+
+export async function getRentalByCtnerIdService(id_str: string):
+ Promise<IRental | null> {
+    try {
+        const IDC: ObjectID = new ObjectID(id_str);
+        const ctner: IContainer | null = await Container.findById(IDC);
+        if (!ctner) {
+            return null;
+        }
+        return await getRentalObject(IDC);
+    }
+    catch (error) {
+        return null;
+    }
+}
+
+export async function getRentalByCtnerNumberService(CtnerNumber: number):
+    Promise<IRental | null> {
     try {
         const filter: any = {
             id_container: CtnerNumber
         }
-        const ctner: IContainer| null = await Container.findOne(filter);
-        if( !ctner ) {
+        const ctner: IContainer | null = await Container.findOne(filter);
+        if (!ctner) {
             return null;
         }
-        const idCtner: ObjectID = ctner._id;        
+        const IDC:ObjectID = new ObjectID(ctner._id);
+
+        return await getRentalObject(IDC);
+    }
+    catch (error) {
+        return null;
+    }
+}
+
+
+async function getRentalObject(idCtner:ObjectID): Promise<IRental | null> {
+    try {
+        // const idCtner: ObjectID = ctner._id;
 
         const filtra: any = {
             id_container: idCtner,
@@ -29,7 +57,7 @@ export async function getRentalByCtnerService(CtnerNumber: number) :
         }
         // const alquiler: IRental| null = await Rental.findOne(filtra);
         return await Rental.findOne(filtra);
-    } 
+    }
     catch (error) {
         return null;
     }

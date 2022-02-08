@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getRentalByCtnerController = exports.getListAlquilerController = exports.createAlquilerCtrl = void 0;
+exports.getRentalByIdController = exports.getRentalByCtnerController = exports.getListAlquilerController = exports.createAlquilerCtrl = void 0;
 const rentalService_1 = require("../services/rentalService");
 //  Edit! SUCCESS Jan.28th,2022
 function createAlquilerCtrl(req, res) {
@@ -51,10 +51,11 @@ exports.getListAlquilerController = getListAlquilerController;
 function getRentalByCtnerController(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const { idctner } = req.params;
-            const rental = yield (0, rentalService_1.getRentalByCtnerService)(Number(idctner));
+            const { n_ctner } = req.params;
+            const rental = yield (0, rentalService_1.getRentalByCtnerNumberService)(Number(n_ctner));
             if (!rental) {
                 res.status(569).json({ status: 569, message: 'Rental object requested is not exists.' });
+                return;
             }
             res.json(rental);
         }
@@ -64,3 +65,20 @@ function getRentalByCtnerController(req, res) {
     });
 }
 exports.getRentalByCtnerController = getRentalByCtnerController;
+function getRentalByIdController(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const { id } = req.params;
+            const rental = yield (0, rentalService_1.getRentalByCtnerIdService)(id);
+            if (!rental) {
+                res.status(569).json({ status: 569, message: 'Rental object requested is not exists.' });
+                return;
+            }
+            res.json(rental);
+        }
+        catch (error) {
+            res.status(579).json({ status: 579, message: 'Error to try get Alquiler object.' });
+        }
+    });
+}
+exports.getRentalByIdController = getRentalByIdController;

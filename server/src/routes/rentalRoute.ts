@@ -5,6 +5,7 @@ import {
     createAlquilerCtrl,
     getListAlquilerController,
     getRentalByCtnerController,
+    getRentalByIdController,
     // createPaymentCtrl,
     // getPaymentByCtnerCtrl,
     // getSaldoByCtnerCtrl, 
@@ -25,7 +26,9 @@ class Rental {
     routes() {
         this.router.post('/', createAlquilerCtrl);  // It Works! Jan.2022.- OK
         this.router.get('/', getListAlquilerController);
-        this.router.get('/container/:idctner', getRentalByCtnerController); //OK! Works.
+        this.router.get('/number_ctner/:n_ctner', getRentalByCtnerController); //OK! Works.
+        this.router.get('/container/:id', getRentalByIdController); //OK! Works.
+
 /* 
         this.router.post('/pagos/', createPaymentCtrl);      // insert new payment to database
         this.router.get('/pagos/:id', getPaymentByCtnerCtrl);   // get all payments of client by container active,

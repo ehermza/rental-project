@@ -12,17 +12,33 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findAndUpdateService = exports.getlistAlquilerService = exports.createAlquilerService = exports.getRentalByCtnerService = void 0;
+exports.findAndUpdateService = exports.getlistAlquilerService = exports.createAlquilerService = exports.getRentalByCtnerNumberService = exports.getRentalByCtnerIdService = void 0;
 const mongodb_1 = require("mongodb");
 const Rental_1 = __importDefault(require("../models/Rental"));
 const Container_1 = __importDefault(require("../models/Container"));
 /**
  * Date: Feb.07th,2022.-
- *  To Check!
+ *  WORKS OK! SUCCESS.
  * @param CtnerNumber
  * @returns
  */
-function getRentalByCtnerService(CtnerNumber) {
+function getRentalByCtnerIdService(id_str) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const IDC = new mongodb_1.ObjectID(id_str);
+            const ctner = yield Container_1.default.findById(IDC);
+            if (!ctner) {
+                return null;
+            }
+            return yield getRentalObject(IDC);
+        }
+        catch (error) {
+            return null;
+        }
+    });
+}
+exports.getRentalByCtnerIdService = getRentalByCtnerIdService;
+function getRentalByCtnerNumberService(CtnerNumber) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const filter = {
@@ -32,7 +48,19 @@ function getRentalByCtnerService(CtnerNumber) {
             if (!ctner) {
                 return null;
             }
-            const idCtner = ctner._id;
+            const IDC = new mongodb_1.ObjectID(ctner._id);
+            return yield getRentalObject(IDC);
+        }
+        catch (error) {
+            return null;
+        }
+    });
+}
+exports.getRentalByCtnerNumberService = getRentalByCtnerNumberService;
+function getRentalObject(idCtner) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            // const idCtner: ObjectID = ctner._id;
             const filtra = {
                 id_container: idCtner,
                 active: true
@@ -45,7 +73,6 @@ function getRentalByCtnerService(CtnerNumber) {
         }
     });
 }
-exports.getRentalByCtnerService = getRentalByCtnerService;
 //  Edit! SUCCESS Jan.28th,2022
 function createAlquilerService(id_client, id_container, idDebt, fecha) {
     return __awaiter(this, void 0, void 0, function* () {

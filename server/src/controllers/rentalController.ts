@@ -4,7 +4,8 @@ import { ObjectID } from "mongodb"
 import {
     createAlquilerService,
     getlistAlquilerService,
-    getRentalByCtnerService,
+    getRentalByCtnerIdService,
+    getRentalByCtnerNumberService,
     // getRentalObjectServ,
     // insertPaymentService,
     // getPaymentByCtnerServ,
@@ -60,9 +61,27 @@ export async function getListAlquilerController(req:Request, res:Response)
 export async function getRentalByCtnerController(req: Request, res: Response)
  {
     try {
-        const { idctner } = req.params;
+        const { n_ctner } = req.params;
         const rental: IRental| null = 
-            await getRentalByCtnerService(Number(idctner));
+            await getRentalByCtnerNumberService(Number(n_ctner));
+
+        if (!rental) {
+            res.status(569).json({ status: 569, message: 'Rental object requested is not exists.' });
+            return;
+        }
+        res.json(rental);
+
+    } catch (error) {
+        res.status(579).json({ status: 579, message: 'Error to try get Alquiler object.' });
+    }
+}
+
+export async function getRentalByIdController(req: Request, res: Response)
+ {
+    try {
+        const { id } = req.params;
+        const rental: IRental| null = 
+            await getRentalByCtnerIdService(id);
 
         if (!rental) {
             res.status(569).json({ status: 569, message: 'Rental object requested is not exists.' });
