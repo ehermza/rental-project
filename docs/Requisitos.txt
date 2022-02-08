@@ -17,5 +17,15 @@
         
 07/Feb.2022
 	Get Rental by Container Number:
-	routes: /api/rental/container/:id
+	routes: /api/rental/container/:number
+	
+	
+07/Feb.2022
+	Set Payment by id_Container:
+	routes: /api/payment/:id-ctner
+	
+	Get RENTAL_ID= from Rental.find('id-ctner');
+	Get PERIOD_ID= from Rental.last_payment_per + 1;
+	Get {amount, paid_at, recibo} = req.body;
+	
 	
