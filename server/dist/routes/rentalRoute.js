@@ -10,8 +10,8 @@ class Rental {
     routes() {
         this.router.post('/', rentalController_1.createAlquilerCtrl); // It Works! Jan.28th,2022.- OK
         this.router.get('/', rentalController_1.getListAlquilerController);
+        this.router.get('/container/:idctner', rentalController_1.getRentalByCtnerController);
         /*
-                this.router.get('/container/:idctner', getRentalByCtnerController);
                 this.router.post('/pagos/', createPaymentCtrl);      // insert new payment to database
                 this.router.get('/pagos/:id', getPaymentByCtnerCtrl);   // get all payments of client by container active,
                 this.router.get('/saldo/:id', getSaldoByCtnerCtrl);     // get difer. (pagos_total - deuda_total)

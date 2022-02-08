@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getListAlquilerController = exports.createAlquilerCtrl = void 0;
+exports.getRentalByCtnerController = exports.getListAlquilerController = exports.createAlquilerCtrl = void 0;
 const rentalService_1 = require("../services/rentalService");
 //  Edit! SUCCESS Jan.28th,2022
 function createAlquilerCtrl(req, res) {
@@ -40,9 +40,27 @@ exports.createAlquilerCtrl = createAlquilerCtrl;
 function getListAlquilerController(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            const listRental = yield (0, rentalService_1.getlistAlquilerService)();
+            res.json(listRental);
         }
         catch (error) {
         }
     });
 }
 exports.getListAlquilerController = getListAlquilerController;
+function getRentalByCtnerController(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const { idctner } = req.params;
+            const rental = yield (0, rentalService_1.getRentalByCtnerService)(Number(idctner));
+            if (!rental) {
+                res.status(569).json({ status: 569, message: 'Rental object requested is not exists.' });
+            }
+            res.json(rental);
+        }
+        catch (error) {
+            res.status(579).json({ status: 579, message: 'Error to try get Alquiler object.' });
+        }
+    });
+}
+exports.getRentalByCtnerController = getRentalByCtnerController;

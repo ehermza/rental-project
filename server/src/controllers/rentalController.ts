@@ -4,12 +4,12 @@ import { ObjectID } from "mongodb"
 import {
     createAlquilerService,
     getlistAlquilerService,
+    getRentalByCtnerService,
     // getRentalObjectServ,
     // insertPaymentService,
     // getPaymentByCtnerServ,
     // getSaldoByCtnerService,
     // deletePaymentByCtnerServ,
-    // getRentalByCtnerService,
     // getMonthNumberService,
     // insertDebtService
 } from "../services/rentalService";
@@ -18,6 +18,7 @@ import {
     getContainersServ,
      getContainerOneServ 
 } from "../services/containerService";
+import { IRental } from "../models/Rental";
 
 
 //  Edit! SUCCESS Jan.28th,2022
@@ -48,7 +49,28 @@ export async function createAlquilerCtrl(req: Request, res: Response) {
 export async function getListAlquilerController(req:Request, res:Response) 
 {
     try {
+        const listRental:IRental[]| null = await getlistAlquilerService();
+        res.json(listRental);
+        
     } catch (error) {
         
+    }
+}
+
+export async function getRentalByCtnerController(req: Request, res: Response)
+ {
+    try {
+        const { idctner } = req.params;
+        const rental: IRental| null = 
+            await getRentalByCtnerService(Number(idctner));
+
+        if (!rental) {
+            res.status(569).json({ status: 569, message: 'Rental object requested is not exists.' });
+            return;
+        }
+        res.json(rental);
+
+    } catch (error) {
+        res.status(579).json({ status: 579, message: 'Error to try get Alquiler object.' });
     }
 }

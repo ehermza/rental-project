@@ -1,0 +1,21 @@
+
+
+31/Jan.2022
+    Insertar Deuda a todos los Alquileres Activos:
+        for(const alquiler of alquileres) 
+        {
+            Insert Debt ({
+                rental_id: alquiler._id;
+                period_id: get next period from database;
+                amount: alquiler.price_tocharge;
+            }) ;
+            Update() alquiler {
+                last_debt_per;
+                deuda_total;
+            } 
+        }
+        
+07/Feb.2022
+	Get Rental by Container Number:
+	routes: /api/rental/container/:id
+	

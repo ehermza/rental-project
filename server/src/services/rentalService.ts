@@ -1,8 +1,39 @@
+import { ObjectID } from "mongodb";
 
 import Rental, { IRental } from '../models/Rental';
-import { ObjectID } from "mongodb";
+import Container, { IContainer } from "../models/Container";
 import Debt, { IDebt } from '../models/Debt';
 
+/**
+ * Date: Feb.07th,2022.-
+ *  WORKS OK! SUCCESS.
+ * @param CtnerNumber 
+ * @returns 
+ */
+export async function getRentalByCtnerService(CtnerNumber: number) :
+    Promise <IRental| null>
+{
+    try {
+        const filter: any = {
+            id_container: CtnerNumber
+        }
+        const ctner: IContainer| null = await Container.findOne(filter);
+        if( !ctner ) {
+            return null;
+        }
+        const idCtner: ObjectID = ctner._id;        
+
+        const filtra: any = {
+            id_container: idCtner,
+            active: true
+        }
+        // const alquiler: IRental| null = await Rental.findOne(filtra);
+        return await Rental.findOne(filtra);
+    } 
+    catch (error) {
+        return null;
+    }
+}
 
 //  Edit! SUCCESS Jan.28th,2022
 export async function createAlquilerService(id_client: string, id_container: string, idDebt: string, fecha: number) {
@@ -62,24 +93,24 @@ export async function getlistAlquilerService(): Promise<IRental[] | null> // : P
 
 
 // export async function findAndUpdateService(idRental: string, dbto: IDebt)
-export async function findAndUpdateService(alquiler:IRental , update_per: string)
+export async function findAndUpdateService(alquiler: IRental, update_per: string)
     : Promise<IRental | null> {
     try {
         /**
          * Created Date: Jan 01th,2022
          */
-        const {_id, price_tocharge, deuda_total} = alquiler;
+        const { _id, price_tocharge, deuda_total } = alquiler;
         const filter = {
             _id: new ObjectID(_id)
         }
-        if(!price_tocharge)
+        if (!price_tocharge)
             return null;
 
         const totaldebt: Number = deuda_total.valueOf() + price_tocharge.valueOf();
         const update = {
             'last_debt_per': update_per,
             'deuda_total': totaldebt
-         };
+        };
 
         return await Rental.findOneAndUpdate(filter, update, {
             new: true

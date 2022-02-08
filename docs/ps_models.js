@@ -10,8 +10,8 @@
         date_final: Date,
         deuda_total: Number,
         pagos_total: Number,
-        last_payment_id: id-table-payment,
-        last_debt_id: id-table-debt
+        last_payment_per: String,
+        last_debt_per: String
    }
 );
 export default model<IRental>('rental', rentalSchema);
@@ -46,8 +46,8 @@ const periodSchema = new Schema(
     {
     month_name: String,
     year_number: Number,
-    month_next: String,
-    month_prev: String,
+    month_next_id: String,
+    month_prev_id: String,
 })
 export default model("period", periodSchema);
 '*********************************************************************'

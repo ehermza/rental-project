@@ -12,9 +12,40 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findAndUpdateService = exports.getlistAlquilerService = exports.createAlquilerService = void 0;
-const Rental_1 = __importDefault(require("../models/Rental"));
+exports.findAndUpdateService = exports.getlistAlquilerService = exports.createAlquilerService = exports.getRentalByCtnerService = void 0;
 const mongodb_1 = require("mongodb");
+const Rental_1 = __importDefault(require("../models/Rental"));
+const Container_1 = __importDefault(require("../models/Container"));
+/**
+ * Date: Feb.07th,2022.-
+ *  To Check!
+ * @param CtnerNumber
+ * @returns
+ */
+function getRentalByCtnerService(CtnerNumber) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const filter = {
+                id_container: CtnerNumber
+            };
+            const ctner = yield Container_1.default.findOne(filter);
+            if (!ctner) {
+                return null;
+            }
+            const idCtner = ctner._id;
+            const filtra = {
+                id_container: idCtner,
+                active: true
+            };
+            // const alquiler: IRental| null = await Rental.findOne(filtra);
+            return yield Rental_1.default.findOne(filtra);
+        }
+        catch (error) {
+            return null;
+        }
+    });
+}
+exports.getRentalByCtnerService = getRentalByCtnerService;
 //  Edit! SUCCESS Jan.28th,2022
 function createAlquilerService(id_client, id_container, idDebt, fecha) {
     return __awaiter(this, void 0, void 0, function* () {
