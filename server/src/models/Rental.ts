@@ -8,8 +8,8 @@ export interface IRental extends Document
     active: Boolean;
     date_init: Date;
     date_final: Date;
-    deuda_total: Number;
-    pagos_total: Number;
+    deuda_total: number;
+    pagos_total: number;
     last_payment_per: string;
     last_debt_per: string;
     price_tocharge: Number;

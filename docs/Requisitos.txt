@@ -28,4 +28,9 @@
 	Get PERIOD_ID= from Rental.last_payment_per + 1;
 	Get {amount, paid_at, recibo} = req.body;
 	
+	If (amount++ == tocharged) then
+		Update from Rental.last_payment_per
 	
+AT. RESTA ACTUALIZAR UPDATE Rental table:
+		RENTAL.pagos_total
+		RENTAL.last_payment_per

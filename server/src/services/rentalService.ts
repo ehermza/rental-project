@@ -5,11 +5,19 @@ import Container, { IContainer } from "../models/Container";
 import Debt, { IDebt } from '../models/Debt';
 
 
+export async function updateRentalService(id: ObjectID, alquilerObj:IRental) 
+{
+    try {
+        return await Rental.findByIdAndUpdate(id, alquilerObj);
+
+    } catch (error) {
+        throw new Error('Error to try update the rental.');
+    }
+}
+
 /**
  * Date: Feb.07th,2022.-
  *  WORKS OK! SUCCESS.
- * @param CtnerNumber 
- * @returns 
  */
 
 export async function getRentalByCtnerIdService(id_str: string):
@@ -26,7 +34,11 @@ export async function getRentalByCtnerIdService(id_str: string):
         return null;
     }
 }
-
+/**
+ * Date: Feb.07th,2022 
+ * @param CtnerNumber 
+ * @returns 
+ */
 export async function getRentalByCtnerNumberService(CtnerNumber: number):
     Promise<IRental | null> {
     try {
@@ -45,7 +57,6 @@ export async function getRentalByCtnerNumberService(CtnerNumber: number):
         return null;
     }
 }
-
 
 async function getRentalObject(idCtner:ObjectID): Promise<IRental | null> {
     try {
@@ -134,7 +145,7 @@ export async function findAndUpdateService(alquiler: IRental, update_per: string
         if (!price_tocharge)
             return null;
 
-        const totaldebt: Number = deuda_total.valueOf() + price_tocharge.valueOf();
+        const totaldebt: number = deuda_total.valueOf() + price_tocharge.valueOf();
         const update = {
             'last_debt_per': update_per,
             'deuda_total': totaldebt
