@@ -8,12 +8,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getNextPeriodService = exports.insertDebtService = void 0;
-const Period_1 = __importDefault(require("../models/Period"));
+exports.insertDebtService = void 0;
 function insertDebtService(debito) {
     return __awaiter(this, void 0, void 0, function* () {
         /** Date: Jan.30th.2022
@@ -29,24 +25,29 @@ function insertDebtService(debito) {
     });
 }
 exports.insertDebtService = insertDebtService;
-function getNextPeriodService(ptrCurrentPer) {
-    return __awaiter(this, void 0, void 0, function* () {
+/*
+ export async function getNextPeriodService(ptrCurrentPer:string):
+    Promise<string>
+     {
         try {
-            const objPer = yield Period_1.default.findById(ptrCurrentPer);
-            if (!objPer) {
+            const objPer:IPeriod| null = await Period.findById(ptrCurrentPer);
+            if(! objPer) {
                 return "";
             }
             console.log("=============(CURRENT/PERIOD)=============");
             console.log(objPer);
+    
             return objPer.month_next_id;
+                
         }
         catch (error) {
             throw new Error();
         }
-    });
+    
 }
-exports.getNextPeriodService = getNextPeriodService;
-/* export async function getNextPeriodService(ptrDebtLast:string):
+
+/*
+ export async function getNextPeriodService(ptrDebtLast:string):
     Promise<string> {
     try {
         // const obj:ObjectId

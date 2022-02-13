@@ -16,7 +16,7 @@ class Payment
    
     routes() {
         // this.router.get('/container/:idctner', )
-        this.router.post('/', insertPaymentByCtnerController)
+        this.router.post('/', insertPaymentByCtnerController);  // Edit!
     }
 }
 const pago: Payment = new Payment();

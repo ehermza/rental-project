@@ -10,9 +10,10 @@ import {
 
 import {
     insertDebtService,
-    getNextPeriodService,
     } from "../services/debtService";
 import Rental, { IRental } from "../models/Rental";
+import { getNextPeriodService } from "../services/periodService";
+import { IPeriod } from "../models/Period";
 
 
 export async function insertDebtsController(req: Request, res: Response) {
@@ -56,7 +57,8 @@ async function CreateDebtObject(alquiler: IRental): Promise<IDebt>
      let ptrPeriod: string = "61f49146ac6c5cf15c191b1a";
             // const <October-2021> Period.
     if (last_debt_per) {
-        ptrPeriod = await getNextPeriodService(last_debt_per);
+        const per:IPeriod| null = await getNextPeriodService(last_debt_per);
+        ptrPeriod = per?._id;
     }
     /**
      * Creating the new Debt Collection on database;

@@ -16,6 +16,7 @@ exports.insertDebtsController = void 0;
 const Debt_1 = __importDefault(require("../models/Debt"));
 const rentalService_1 = require("../services/rentalService");
 const debtService_1 = require("../services/debtService");
+const periodService_1 = require("../services/periodService");
 function insertDebtsController(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         /** Date: Jan.30th.2022  SUCCESS. WORKING OK!
@@ -57,7 +58,8 @@ function CreateDebtObject(alquiler) {
         let ptrPeriod = "61f49146ac6c5cf15c191b1a";
         // const <October-2021> Period.
         if (last_debt_per) {
-            ptrPeriod = yield (0, debtService_1.getNextPeriodService)(last_debt_per);
+            const per = yield (0, periodService_1.getNextPeriodService)(last_debt_per);
+            ptrPeriod = per === null || per === void 0 ? void 0 : per._id;
         }
         /**
          * Creating the new Debt Collection on database;

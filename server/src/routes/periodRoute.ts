@@ -1,9 +1,11 @@
 
 import { Router } from "express";
-import { getLastPeriodController } from "../controllers/periodController"
+import {
+    getLastPeriodController,
+    getNextPeriodController
+} from "../controllers/periodController"
 
-class Period 
-{
+class Period {
     /**
      * Author: EHERMZA
      * Clase para detallar mes de alquiler de forma dinámica. 
@@ -15,7 +17,8 @@ class Period
         this.routes();
     }
     routes() {
-        this.router.get("/", getLastPeriodController);
+        this.router.get("/", getLastPeriodController);      //OK
+        this.router.get("/next", getNextPeriodController);  //OK
 
     }
 }

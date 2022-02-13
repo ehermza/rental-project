@@ -12,15 +12,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findAndUpdateService = exports.getlistAlquilerService = exports.createAlquilerService = exports.getRentalByCtnerNumberService = exports.getRentalByCtnerIdService = void 0;
+exports.findAndUpdateService = exports.getlistAlquilerService = exports.createAlquilerService = exports.getRentalByCtnerNumberService = exports.getRentalByCtnerIdService = exports.updateRentalService = void 0;
 const mongodb_1 = require("mongodb");
 const Rental_1 = __importDefault(require("../models/Rental"));
 const Container_1 = __importDefault(require("../models/Container"));
+function updateRentalService(id, alquilerObj) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            return yield Rental_1.default.findByIdAndUpdate(id, alquilerObj);
+        }
+        catch (error) {
+            throw new Error('Error to try update the rental.');
+        }
+    });
+}
+exports.updateRentalService = updateRentalService;
 /**
  * Date: Feb.07th,2022.-
  *  WORKS OK! SUCCESS.
- * @param CtnerNumber
- * @returns
  */
 function getRentalByCtnerIdService(id_str) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -38,6 +47,11 @@ function getRentalByCtnerIdService(id_str) {
     });
 }
 exports.getRentalByCtnerIdService = getRentalByCtnerIdService;
+/**
+ * Date: Feb.07th,2022
+ * @param CtnerNumber
+ * @returns
+ */
 function getRentalByCtnerNumberService(CtnerNumber) {
     return __awaiter(this, void 0, void 0, function* () {
         try {

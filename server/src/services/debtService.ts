@@ -19,7 +19,7 @@ export async function insertDebtService(debito: IDebt): Promise<IDebt>
         throw new Error();
     }
 }
-
+/*
  export async function getNextPeriodService(ptrCurrentPer:string): 
     Promise<string>
      {
@@ -40,7 +40,8 @@ export async function insertDebtService(debito: IDebt): Promise<IDebt>
     
 }
 
-/* export async function getNextPeriodService(ptrDebtLast:string): 
+/*
+ export async function getNextPeriodService(ptrDebtLast:string): 
     Promise<string> {
     try {
         // const obj:ObjectId
